@@ -1,0 +1,16 @@
+PODS:
+  - CTCheckbox (0.0.5)
+
+DEPENDENCIES:
+  - CTCheckbox
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CTCheckbox
+
+SPEC CHECKSUMS:
+  CTCheckbox: fec0e51c635ad555effd230a1fa186105010a382
+
+PODFILE CHECKSUM: dc97796b099005a8eb00f517768bb5c44ca6b9ba
+
+COCOAPODS: 1.5.3

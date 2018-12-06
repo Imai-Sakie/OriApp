@@ -1,0 +1,6 @@
+framework module Pods_OriAppTests {
+  umbrella header "Pods-OriAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

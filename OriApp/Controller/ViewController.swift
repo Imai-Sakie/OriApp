@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CTCheckbox
 
 class ViewController: UIViewController, UITextFieldDelegate {
     /*--------------STR--------------*/
@@ -114,7 +115,69 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func tapAllDiesButton(_ sender: Any) {
+        let backgroundView = makeBackgroundView()
+        self.view.addSubview(backgroundView)
         
+        let roleSelectView = makeRoleSelectView()
+        backgroundView.addSubview(roleSelectView)
+        
+        let titleLabel = makeTileLabel()
+        roleSelectView.addSubview(titleLabel)
+        
+        let lineView = makeLineView()
+        roleSelectView.addSubview(lineView)
+        
+        //ダイスロールボタン
+        let roleButton = UIButton()
+        roleSelectView.addSubview(roleButton)
+        
+    }
+    
+    //部品生成のための処理
+    func makeRoleButton() -> UIButton {
+        let roleButton = UIButton()
+        roleButton.frame = CGRect(x: 50, y: 260, width: 200, height: 20)
+        roleButton.setTitle("ダイスを振る", for: .normal)
+        roleButton.setTitleColor(UIColor.lightGray, for: .highlighted)
+        roleButton.titleLabel?.font = UIFont(name: "HiraKakuProN-W6", size: 15)
+        roleButton.backgroundColor = UIColor(red: 0 / 255, green: 145 / 255, blue: 147 / 255, alpha: 1)
+        return roleButton
+    }
+    
+    func makeBackgroundView() -> UIView {
+        let backgroundView = UIView()
+        backgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        self.view.addSubview(backgroundView)
+        return backgroundView
+    }
+    
+    func makeRoleSelectView() -> UIView {
+        let roleSelectView = UIView()
+        roleSelectView.frame.size = CGSize(width: 300, height: 300)
+        roleSelectView.center.x = self.view.center.x
+        roleSelectView.center.y = 250
+        roleSelectView.backgroundColor = UIColor.white
+        roleSelectView.layer.shadowOpacity = 0.3
+        roleSelectView.layer.cornerRadius = 3
+        return roleSelectView
+    }
+    
+    //装飾部品の生成のための処理
+    func makeTileLabel() -> UILabel {
+        let titleLabel = UILabel()
+        titleLabel.frame = CGRect(x: 10, y: 5, width: 280, height: 40)
+        titleLabel.text = "ロールする能力値を選択してください"
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.font = UIFont(name: "HiraKakuProN-W6", size: 15)
+        return titleLabel
+    }
+    
+    func makeLineView() -> UIView {
+        let lineView = UIView()
+        lineView.frame = CGRect(x: 5, y: 40, width: 290, height: 2)
+        lineView.backgroundColor = UIColor(red: 0 / 255, green: 145 / 255, blue: 147 / 255, alpha: 1)
+        return lineView
     }
     
 }

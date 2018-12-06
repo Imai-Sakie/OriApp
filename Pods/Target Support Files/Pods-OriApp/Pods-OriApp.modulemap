@@ -1,0 +1,6 @@
+framework module Pods_OriApp {
+  umbrella header "Pods-OriApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
