@@ -16,6 +16,8 @@
 		6A48FD7B2114B9960036F1FA /* OriAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48FD7A2114B9960036F1FA /* OriAppTests.swift */; };
 		6A48FD862114B9960036F1FA /* OriAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48FD852114B9960036F1FA /* OriAppUITests.swift */; };
 		6A739C9621B69FE100FF4D06 /* AllRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A739C9521B69FE100FF4D06 /* AllRoleViewController.swift */; };
+		6AE1D6B221B936C200273D80 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AE1D6B121B936C200273D80 /* checkbox.png */; };
+		6AE1D6B821B93E6D00273D80 /* nocheckbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AE1D6B721B93E6C00273D80 /* nocheckbox.png */; };
 		6AE3DBDF212EE42400E24916 /* DiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3DBDE212EE42400E24916 /* DiesViewController.swift */; };
 		B77540C45767A84038B458AB /* Pods_OriApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1331D1F3C6E434F65BE707A /* Pods_OriApp.framework */; };
 		C59308DEA3B1381BF586BAC9 /* Pods_OriAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D334D96F819B411B078F1FD0 /* Pods_OriAppUITests.framework */; };
@@ -58,6 +60,8 @@
 		6A48FD852114B9960036F1FA /* OriAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriAppUITests.swift; sourceTree = "<group>"; };
 		6A48FD872114B9960036F1FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A739C9521B69FE100FF4D06 /* AllRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRoleViewController.swift; sourceTree = "<group>"; };
+		6AE1D6B121B936C200273D80 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		6AE1D6B721B93E6C00273D80 /* nocheckbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nocheckbox.png; sourceTree = "<group>"; };
 		6AE3DBDE212EE42400E24916 /* DiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiesViewController.swift; sourceTree = "<group>"; };
 		B1331D1F3C6E434F65BE707A /* Pods_OriApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OriApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3424A2BAB9820FDA8735C18 /* Pods-OriAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OriAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OriAppUITests/Pods-OriAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				6AE3DBDC212EE3A800E24916 /* Controller */,
 				6A48FD652114B9900036F1FA /* AppDelegate.swift */,
 				6A48FD692114B9900036F1FA /* Main.storyboard */,
+				6AE1D6B121B936C200273D80 /* checkbox.png */,
+				6AE1D6B721B93E6C00273D80 /* nocheckbox.png */,
 				6A48FD6C2114B9960036F1FA /* Assets.xcassets */,
 				6A48FD6E2114B9960036F1FA /* LaunchScreen.storyboard */,
 				6A48FD712114B9960036F1FA /* Info.plist */,
@@ -288,7 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A48FD702114B9960036F1FA /* LaunchScreen.storyboard in Resources */,
+				6AE1D6B821B93E6D00273D80 /* nocheckbox.png in Resources */,
 				6A48FD6D2114B9960036F1FA /* Assets.xcassets in Resources */,
+				6AE1D6B221B936C200273D80 /* checkbox.png in Resources */,
 				6A48FD6B2114B9900036F1FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
