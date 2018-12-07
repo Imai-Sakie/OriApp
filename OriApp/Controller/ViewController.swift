@@ -110,6 +110,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var checkboxArray: [UIButton] = []
     
+    var backgroundView: UIView!
     var roleSelectView: UIView!
     
     override func viewDidLoad() {
@@ -129,7 +130,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func tapAllDiesButton(_ sender: Any) {
-        let backgroundView = makeBackgroundView()
+        backgroundView = makeBackgroundView()
         self.view.addSubview(backgroundView)
         
         roleSelectView = makeRoleSelectView()
@@ -145,6 +146,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let roleButton = makeRoleButton()
         roleSelectView.addSubview(roleButton)
         
+        let cancelButton = makeCancelButton()
+        roleSelectView.addSubview(cancelButton)
+        
         //チェックボックスの作成
         makeAllCheckbox()
         
@@ -154,11 +158,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    /*--------------チェックボックスの処理--------------*/
+    /*--------------ボタンの処理--------------*/
     @objc func onClickMyButton(sender: UIButton) {
         //ボタンが押されたら現在のmyButtonのBool値の反対の値が入る(チェックされたらtrue, 外れたらfalseが代入される)
         sender.isSelected = !sender.isSelected
-//        print(sender.isSelected)
+        print(checkboxArray[sender.tag - 1])
         
         if (sender == ALLCheckbox) && (ALLCheckbox.isSelected == true) {
             for box in checkboxArray {
@@ -172,53 +176,65 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @objc func tapRoleButton(sender: UIButton) {
+        print("tapRoleButtonが押されました")
+    }
+    
+    
+    @objc func tapCancelButton(sender: UIButton) {
+        backgroundView.removeFromSuperview()
+        print("tapCancelButtonが押されました")
+    }
+    
+    
     /*--------------部品生成のための処理--------------*/
     func makeAllCheckbox() {
         //チェックボックス
-        STRCheckbox = makeCheckbox(x: 5, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        STRCheckbox = makeCheckbox(tag: 1, x: 5, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(STRCheckbox)
         checkboxArray.append(STRCheckbox)
         
-        CONCheckbox = makeCheckbox(x: 100, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        CONCheckbox = makeCheckbox(tag: 2, x: 100, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(CONCheckbox)
         checkboxArray.append(CONCheckbox)
         
-        POWCheckbox = makeCheckbox(x: 195, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        POWCheckbox = makeCheckbox(tag: 3, x: 195, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(POWCheckbox)
         checkboxArray.append(POWCheckbox)
         
-        DEXCheckbox = makeCheckbox(x: 5, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        DEXCheckbox = makeCheckbox(tag: 4, x: 5, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(DEXCheckbox)
         checkboxArray.append(DEXCheckbox)
         
-        APPCheckbox = makeCheckbox(x: 100, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        APPCheckbox = makeCheckbox(tag: 5, x: 100, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(APPCheckbox)
         checkboxArray.append(APPCheckbox)
         
-        SIZCheckbox = makeCheckbox(x: 195, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        SIZCheckbox = makeCheckbox(tag: 6, x: 195, y: 125, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(SIZCheckbox)
         checkboxArray.append(SIZCheckbox)
         
-        INTCheckbox = makeCheckbox(x: 5, y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        INTCheckbox = makeCheckbox(tag: 7, x: 5, y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(INTCheckbox)
         checkboxArray.append(INTCheckbox)
         
-        EDUCheckbox = makeCheckbox(x: 100 , y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        EDUCheckbox = makeCheckbox(tag: 8, x: 100 , y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(EDUCheckbox)
         checkboxArray.append(EDUCheckbox)
         
-        ALLCheckbox = makeCheckbox(x: 195, y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
+        ALLCheckbox = makeCheckbox(tag: 9, x: 195, y: 200, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(ALLCheckbox)
         checkboxArray.append(ALLCheckbox)
     }
     
     
-    func makeCheckbox(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, action: Selector) -> UIButton {
+    func makeCheckbox(tag: Int, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, action: Selector) -> UIButton {
         let myButton = UIButton()
         myButton.frame = CGRect(x: x, y: y, width: width, height: height)
         myButton.addTarget(self, action: action, for: .touchUpInside)
         myButton.setImage(UIImage(named: "checkbox.png"), for: .selected)
         myButton.setImage(UIImage(named: "nocheckbox.png"), for: .normal)
+        myButton.tag = tag
         return myButton
     }
     
@@ -263,15 +279,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return myLabel
     }
     
+    
     func makeRoleButton() -> UIButton {
         let roleButton = UIButton()
-        roleButton.frame = CGRect(x: 50, y: 260, width: 200, height: 20)
+        roleButton.frame = CGRect(x: 10, y: 260, width: 125, height: 20)
         roleButton.setTitle("ダイスを振る", for: .normal)
         roleButton.setTitleColor(UIColor.lightGray, for: .highlighted)
         roleButton.titleLabel?.font = UIFont(name: "HiraKakuProN-W6", size: 15)
         roleButton.backgroundColor = UIColor(red: 0 / 255, green: 145 / 255, blue: 147 / 255, alpha: 1)
+        roleButton.addTarget(self, action: #selector(self.tapRoleButton(sender:)), for: .touchUpInside)
         return roleButton
     }
+    
+    
+    func makeCancelButton() -> UIButton {
+        let cancelButton = UIButton()
+        cancelButton.frame = CGRect(x: 165, y: 260, width: 125, height: 20)
+        cancelButton.setTitle("キャンセル", for: .normal)
+        cancelButton.setTitleColor(UIColor.gray, for: .highlighted)
+        cancelButton.titleLabel?.font = UIFont(name: "HiraKakuProN-W6", size: 15)
+        cancelButton.backgroundColor = UIColor.lightGray
+        cancelButton.addTarget(self, action: #selector(self.tapCancelButton(sender:)), for: .touchUpInside)
+        return cancelButton
+    }
+    
     
     func makeBackgroundView() -> UIView {
         let backgroundView = UIView()
