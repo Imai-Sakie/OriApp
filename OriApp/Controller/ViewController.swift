@@ -108,10 +108,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var INTCheckbox: UIButton!
     var EDUCheckbox: UIButton!
     
+    /*--------------その他必要なもの--------------*/
     var checkboxArray: [UIButton] = []
     
     var backgroundView: UIView!
     var roleSelectView: UIView!
+    
+    var STRTotal: Int = 0
+    var CONTotal: Int = 0
+    var SIZTotal: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,14 +160,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //ラベルの作成
         makeAllLabel()
         
+        for box in checkboxArray {
+            box.isSelected = false
+        }
+        
     }
     
     
     /*--------------ボタンの処理--------------*/
     @objc func onClickMyButton(sender: UIButton) {
-        //ボタンが押されたら現在のmyButtonのBool値の反対の値が入る(チェックされたらtrue, 外れたらfalseが代入される)
+        //checkboxが押されたら現在のbuttonのBool値の反対の値が入る(チェックされたらtrue, 外れたらfalseが代入される)
         sender.isSelected = !sender.isSelected
-        print(checkboxArray[sender.tag - 1])
+        checkboxArray[sender.tag - 1].isSelected = sender.isSelected
+        print(checkboxArray[sender.tag - 1].isSelected)
         
         if (sender == ALLCheckbox) && (ALLCheckbox.isSelected == true) {
             for box in checkboxArray {
@@ -177,19 +187,285 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func tapRoleButton(sender: UIButton) {
+        backgroundView.removeFromSuperview()
+        roleTimer()
+        
         print("tapRoleButtonが押されました")
     }
     
     
     @objc func tapCancelButton(sender: UIButton) {
         backgroundView.removeFromSuperview()
+        for box in checkboxArray {
+            box.isSelected = false
+        }
         print("tapCancelButtonが押されました")
     }
     
     
+    /*--------------ダイスロールの処理--------------*/
+    func roleTimer() {
+        var i = 0
+        while (i < 9) {
+            if STRCheckbox.isSelected == true {
+                STRCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.STRDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("STRDiseが呼ばれました")
+            } else if CONCheckbox.isSelected == true {
+                CONCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.CONDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("CONDiesが呼ばれました")
+            } else if POWCheckbox.isSelected == true {
+                POWCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.POWDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("POWDiseが呼ばれました")
+            } else if DEXCheckbox.isSelected == true {
+                DEXCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.DEXDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("DEXDiseが呼ばれました")
+            } else if APPCheckbox.isSelected == true {
+                APPCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.APPDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("APPDiseが呼ばれました")
+            } else if SIZCheckbox.isSelected == true {
+                SIZCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.SIZDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("SIZDiseが呼ばれました")
+            } else if INTCheckbox.isSelected == true {
+                INTCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.INTDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("INTDiseが呼ばれました")
+            } else if EDUCheckbox.isSelected == true {
+                EDUCheckbox.isSelected = false
+                let timer = Timer.scheduledTimer(timeInterval: 0.05,
+                                                 target: self,
+                                                 selector: #selector(self.EDUDies(_:)),
+                                                 userInfo: nil,
+                                                 repeats: true)
+                //１秒後に止める
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    timer.invalidate()
+                    for box in self.checkboxArray {
+                        box.isSelected = false
+                    }
+                }
+                print("EDUDiseが呼ばれました")
+            }
+            
+            
+            
+            i = i + 1
+            print(i)
+        }
+    }
+    
+    
+    @objc func STRDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + rnd3
+        STRaLabel.text = String(total)
+        STRnLabel.text = String(total)
+        //ダメージボーナスの計算
+        if 2...12 ~= STRTotal + SIZTotal  {
+            DBnLabel.text = "-1D6"
+        } else if 13...16 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "-1D4"
+        } else if 17...24 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "±0"
+        } else if 25...32 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+1D4"
+        } else if 33...40 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+1D6"
+        } else if 41...56 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+2D6"
+        } else if 57...72 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+3D6"
+        }
+    }
+    
+    
+    @objc func CONDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        CONTotal = rnd1 + rnd2 + rnd3
+        CONaLabel.text = String(CONTotal)
+        CONnLabel.text = String(CONTotal)
+        EnduranceaLabel.text = String((CONTotal + SIZTotal) / 2)
+        EndurancenLabel.text = String((CONTotal + SIZTotal) / 2)
+    }
+    
+    
+    @objc func POWDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + rnd3
+        POWaLabel.text = String(total)
+        POWnLabel.text = String(total)
+        LuckyaLabel.text = String(total * 5)
+        LuckynLabel.text = String(total * 5)
+        SANaLabel.text = String(total * 5)
+        SANnLabel.text = String(total * 5)
+        MPaLabel.text = String(total)
+        MPnLabel.text = String(total)
+    }
+    
+    
+    @objc func DEXDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + rnd3
+        DEXaLabel.text = String(total)
+        DEXnLabel.text = String(total)
+    }
+    
+    
+    @objc func APPDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + rnd3
+        APPaLabel.text = String(total)
+        APPnLabel.text = String(total)
+    }
+    
+    
+    @objc func SIZDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        SIZTotal = rnd1 + rnd2 + 6
+        SIZaLabel.text = String(SIZTotal)
+        SIZnLabel.text = String(SIZTotal)
+        EnduranceaLabel.text = String((CONTotal + SIZTotal) / 2)
+        EndurancenLabel.text = String((CONTotal + SIZTotal) / 2)
+        //ダメージボーナスの計算
+        if 2...12 ~= STRTotal + SIZTotal  {
+            DBnLabel.text = "-1D6"
+        } else if 13...16 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "-1D4"
+        } else if 17...24 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "±0"
+        } else if 25...32 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+1D4"
+        } else if 33...40 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+1D6"
+        } else if 41...56 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+2D6"
+        } else if 57...72 ~= STRTotal + SIZTotal {
+            DBnLabel.text = "+3D6"
+        }
+    }
+    
+    
+    @objc func INTDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + 6
+        INTaLabel.text = String(total)
+        INTnLabel.text = String(total)
+        IdeaaLabel.text = String(total * 5)
+        IdeanLabel.text = String(total * 5)
+    }
+    
+    
+    @objc func EDUDies(_ sender: Timer) {
+        let rnd1 = Int.random(in: 1...6)
+        let rnd2 = Int.random(in: 1...6)
+        let rnd3 = Int.random(in: 1...6)
+        let total = rnd1 + rnd2 + rnd3 + 3
+        EDUaLabel.text = String(total)
+        EDUnLabel.text = String(total)
+        KnowledgeaLabel.text = String(total * 5)
+        KnowledgenLabel.text = String(total * 5)
+    }
+    
+    
+    
+    
     /*--------------部品生成のための処理--------------*/
+    //チェックボックス
     func makeAllCheckbox() {
-        //チェックボックス
         STRCheckbox = makeCheckbox(tag: 1, x: 5, y: 50, width: 40, height: 40, action: #selector(self.onClickMyButton(sender:)))
         roleSelectView.addSubview(STRCheckbox)
         checkboxArray.append(STRCheckbox)
@@ -239,8 +515,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //チェックボックスのラベル
     func makeAllLabel() {
-        //チェックボックスのラベル
         let STRLabel = makeCheckboxLabel(x: 47, y: 50, width: 40, height: 40, title: "STR")
         roleSelectView.addSubview(STRLabel)
         
@@ -312,6 +588,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return backgroundView
     }
     
+    
     func makeRoleSelectView() -> UIView {
         let roleSelectView = UIView()
         roleSelectView.frame.size = CGSize(width: 300, height: 300)
@@ -323,6 +600,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return roleSelectView
     }
     
+    
     /*--------------装飾部品の生成のための処理--------------*/
     func makeTileLabel() -> UILabel {
         let titleLabel = UILabel()
@@ -332,6 +610,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         titleLabel.font = UIFont(name: "HiraKakuProN-W6", size: 15)
         return titleLabel
     }
+    
     
     func makeLineView() -> UIView {
         let lineView = UIView()
