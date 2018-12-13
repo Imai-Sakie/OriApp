@@ -9,93 +9,101 @@
 import UIKit
 import CTCheckbox
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
     /*--------------STR--------------*/
     @IBOutlet weak var STRnLabel: UILabel!
-    @IBOutlet weak var STRpmTextField: UITextField!
-    @IBOutlet weak var STRtTextField: UITextField!
+    @IBOutlet weak var STRpmLabel: UILabel!
+    @IBOutlet weak var STRtLabel: UILabel!
     @IBOutlet weak var STRaLabel: UILabel!
     
     /*--------------CON--------------*/
     @IBOutlet weak var CONnLabel: UILabel!
-    @IBOutlet weak var CONpmTextField: UITextField!
-    @IBOutlet weak var CONtTextField: UITextField!
+    @IBOutlet weak var CONpmLabel: UILabel!
+    @IBOutlet weak var CONtLabel: UILabel!
     @IBOutlet weak var CONaLabel: UILabel!
     
     /*--------------POW--------------*/
     @IBOutlet weak var POWnLabel: UILabel!
-    @IBOutlet weak var POWpmTextField: UITextField!
-    @IBOutlet weak var POWtTextField: UITextField!
+    @IBOutlet weak var POWpmLabel: UILabel!
+    @IBOutlet weak var POWtLabel: UILabel!
     @IBOutlet weak var POWaLabel: UILabel!
     
     /*--------------DEX--------------*/
     @IBOutlet weak var DEXnLabel: UILabel!
-    @IBOutlet weak var DEXpmTextField: UITextField!
-    @IBOutlet weak var DEXtTextField: UITextField!
+    @IBOutlet weak var DEXpmLabel: UILabel!
+    @IBOutlet weak var DEXtLabel: UILabel!
     @IBOutlet weak var DEXaLabel: UILabel!
     
     /*--------------APP--------------*/
     @IBOutlet weak var APPnLabel: UILabel!
-    @IBOutlet weak var APPpmTextField: UITextField!
-    @IBOutlet weak var APPtTextField: UITextField!
+    @IBOutlet weak var APPpmLabel: UILabel!
+    @IBOutlet weak var APPtLabel: UILabel!
     @IBOutlet weak var APPaLabel: UILabel!
     
     /*--------------SIZ--------------*/
     @IBOutlet weak var SIZnLabel: UILabel!
-    @IBOutlet weak var SIZpmTextField: UITextField!
-    @IBOutlet weak var SIZtTextField: UITextField!
+    @IBOutlet weak var SIZpmLabel: UILabel!
+    @IBOutlet weak var SIZtLabel: UILabel!
     @IBOutlet weak var SIZaLabel: UILabel!
     
     /*--------------INT--------------*/
     @IBOutlet weak var INTnLabel: UILabel!
-    @IBOutlet weak var INTpmTextField: UITextField!
-    @IBOutlet weak var INTtTextField: UITextField!
+    @IBOutlet weak var INTpmLabel: UILabel!
+    @IBOutlet weak var INTtLabel: UILabel!
     @IBOutlet weak var INTaLabel: UILabel!
     
     /*--------------EDU--------------*/
     @IBOutlet weak var EDUnLabel: UILabel!
-    @IBOutlet weak var EDUpmTextField: UITextField!
-    @IBOutlet weak var EDUtTextFueld: UITextField!
+    @IBOutlet weak var EDUpmLabel: UILabel!
+    @IBOutlet weak var EDUtLabel: UILabel!
     @IBOutlet weak var EDUaLabel: UILabel!
     
     /*--------------SAN--------------*/
     @IBOutlet weak var SANnLabel: UILabel!
-    @IBOutlet weak var SANpmTextField: UITextField!
-    @IBOutlet weak var SANtTextField: UITextField!
+    @IBOutlet weak var SANpmLabel: UILabel!
+    @IBOutlet weak var SANtLabel: UILabel!
     @IBOutlet weak var SANaLabel: UILabel!
     
     /*---------------MP--------------*/
     @IBOutlet weak var MPnLabel: UILabel!
-    @IBOutlet weak var MPpmTextField: UITextField!
-    @IBOutlet weak var MPtTextField: UITextField!
+    @IBOutlet weak var MPpmLabel: UILabel!
+    @IBOutlet weak var MPtLabel: UILabel!
     @IBOutlet weak var MPaLabel: UILabel!
     
     /*--------------ｱｲﾃﾞｱ--------------*/
     @IBOutlet weak var IdeanLabel: UILabel!
-    @IBOutlet weak var IdeapmTextField: UITextField!
-    @IBOutlet weak var IdeatTextField: UITextField!
+    @IBOutlet weak var IdeapmLabel: UILabel!
+    @IBOutlet weak var IdeatLabel: UILabel!
     @IBOutlet weak var IdeaaLabel: UILabel!
     
     /*--------------幸運--------------*/
     @IBOutlet weak var LuckynLabel: UILabel!
-    @IBOutlet weak var LuckypmTextField: UITextField!
-    @IBOutlet weak var LuckytTextField: UITextField!
+    @IBOutlet weak var LuckypmLabel: UILabel!
+    @IBOutlet weak var LuckytLabel: UILabel!
     @IBOutlet weak var LuckyaLabel: UILabel!
     
     /*--------------知識--------------*/
     @IBOutlet weak var KnowledgenLabel: UILabel!
-    @IBOutlet weak var KnowledgepmTextField: UITextField!
-    @IBOutlet weak var KnowledgetTextField: UITextField!
+    @IBOutlet weak var KnowledgepmLabel: UILabel!
+    @IBOutlet weak var KnowledgetLabel: UILabel!
     @IBOutlet weak var KnowledgeaLabel: UILabel!
     
     /*--------------耐久--------------*/
     @IBOutlet weak var EndurancenLabel: UILabel!
-    @IBOutlet weak var EndurancepmTextField: UITextField!
-    @IBOutlet weak var EndurancetTextField: UITextField!
+    @IBOutlet weak var EndurancepmLabel: UILabel!
+    @IBOutlet weak var EndurancetLabel: UILabel!
     @IBOutlet weak var EnduranceaLabel: UILabel!
     
     /*--------------ダメボ--------------*/
     @IBOutlet weak var DBnLabel: UILabel!
+    
+    /*--------------技能--------------*/
+    @IBOutlet weak var JobnLabel: UILabel!
+    @IBOutlet weak var JobaLabel: UILabel!
+    
+    @IBOutlet weak var InterestnLabel: UILabel!
+    @IBOutlet weak var InterestaLabel: UILabel!
+    
     
     /*--------------checkboxButton--------------*/
     var ALLCheckbox: UIButton!
@@ -108,7 +116,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var INTCheckbox: UIButton!
     var EDUCheckbox: UIButton!
     
-    /*--------------その他必要なもの--------------*/
+    
+    /*--------------その他--------------*/
     var checkboxArray: [UIButton] = []
     
     var backgroundView: UIView!
@@ -121,10 +130,77 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        STRpmTextField.delegate = self
-        STRtTextField.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         
+        STRnLabel.text = String(0)
+        STRpmLabel.text = String(0)
+        STRtLabel.text = String(0)
+        STRaLabel.text = String(0)
+        
+        CONnLabel.text = String(0)
+        CONpmLabel.text = String(0)
+        CONtLabel.text = String(0)
+        CONaLabel.text = String(0)
+        
+        POWnLabel.text = String(0)
+        POWpmLabel.text = String(0)
+        POWtLabel.text = String(0)
+        POWaLabel.text = String(0)
+        
+        DEXnLabel.text = String(0)
+        DEXpmLabel.text = String(0)
+        DEXtLabel.text = String(0)
+        DEXaLabel.text = String(0)
+        
+        APPnLabel.text = String(0)
+        APPpmLabel.text = String(0)
+        APPtLabel.text = String(0)
+        APPaLabel.text = String(0)
+        
+        SIZnLabel.text = String(0)
+        SIZpmLabel.text = String(0)
+        SIZtLabel.text = String(0)
+        SIZaLabel.text = String(0)
+        
+        INTnLabel.text = String(0)
+        INTpmLabel.text = String(0)
+        INTtLabel.text = String(0)
+        INTaLabel.text = String(0)
+        
+        EDUnLabel.text = String(0)
+        EDUpmLabel.text = String(0)
+        EDUtLabel.text = String(0)
+        EDUaLabel.text = String(0)
+        
+        SANnLabel.text = String(0)
+        SANpmLabel.text = String(0)
+        SANtLabel.text = String(0)
+        SANaLabel.text = String(0)
+        
+        MPnLabel.text = String(0)
+        MPpmLabel.text = String(0)
+        MPtLabel.text = String(0)
+        MPaLabel.text = String(0)
+        
+        IdeanLabel.text = String(0)
+        IdeapmLabel.text = String(0)
+        IdeatLabel.text = String(0)
+        IdeaaLabel.text = String(0)
+        
+        LuckynLabel.text = String(0)
+        LuckypmLabel.text = String(0)
+        LuckytLabel.text = String(0)
+        LuckyaLabel.text = String(0)
+        
+        KnowledgenLabel.text = String(0)
+        KnowledgepmLabel.text = String(0)
+        KnowledgetLabel.text = String(0)
+        KnowledgeaLabel.text = String(0)
+        
+        EndurancenLabel.text = String(0)
+        EndurancepmLabel.text = String(0)
+        EndurancetLabel.text = String(0)
+        EnduranceaLabel.text = String(0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,7 +209,485 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-
+    /*--------------±ボタンの処理--------------*/
+    //STR
+    @IBAction func STRpBtn(_ sender: UIButton) {
+        var pm = Int(STRpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(STRnLabel.text!)! + 1
+        STRnLabel.text = String(total)
+        STRpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func STRmBtn(_ sender: UIButton) {
+        var pm = Int(STRpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(STRnLabel.text!)! - 1
+        STRnLabel.text = String(total)
+        STRpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func STRtpBtn(_ sender: UIButton) {
+        var pm = Int(STRtLabel.text!)
+        pm = pm! + 1
+        let total = Int(STRnLabel.text!)! + 1
+        STRnLabel.text = String(total)
+        STRtLabel.text = String(pm!)
+    }
+    
+    @IBAction func STRtmBtn(_ sender: UIButton) {
+        var pm = Int(STRtLabel.text!)
+        pm = pm! - 1
+        let total = Int(STRnLabel.text!)! - 1
+        STRnLabel.text = String(total)
+        STRtLabel.text = String(pm!)
+    }
+    
+    
+    //CON
+    @IBAction func CONpBtn(_ sender: UIButton) {
+        var pm = Int(CONpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(CONnLabel.text!)! + 1
+        CONnLabel.text = String(total)
+        CONpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func CONmBtn(_ sender: UIButton) {
+        var pm = Int(CONpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(CONnLabel.text!)! - 1
+        CONnLabel.text = String(total)
+        CONpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func CONtpBtn(_ sender: UIButton) {
+        var pm = Int(CONtLabel.text!)
+        pm = pm! + 1
+        let total = Int(CONnLabel.text!)! + 1
+        CONnLabel.text = String(total)
+        CONtLabel.text = String(pm!)
+    }
+    
+    @IBAction func CONtmBtn(_ sender: UIButton) {
+        var pm = Int(CONtLabel.text!)
+        pm = pm! - 1
+        let total = Int(CONnLabel.text!)! - 1
+        CONnLabel.text = String(total)
+        CONtLabel.text = String(pm!)
+    }
+    
+    
+    //POW
+    @IBAction func POWpBtn(_ sender: UIButton) {
+        var pm = Int(POWpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(POWnLabel.text!)! + 1
+        POWnLabel.text = String(total)
+        POWpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func POWmBtn(_ sender: UIButton) {
+        var pm = Int(POWpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(POWnLabel.text!)! - 1
+        POWnLabel.text = String(total)
+        POWpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func POWtpBtn(_ sender: UIButton) {
+        var pm = Int(POWtLabel.text!)
+        pm = pm! + 1
+        let total = Int(POWnLabel.text!)! + 1
+        POWnLabel.text = String(total)
+        POWtLabel.text = String(pm!)
+    }
+    
+    @IBAction func POWtmBtn(_ sender: UIButton) {
+        var pm = Int(POWtLabel.text!)
+        pm = pm! - 1
+        let total = Int(POWnLabel.text!)! - 1
+        POWnLabel.text = String(total)
+        POWtLabel.text = String(pm!)
+    }
+    
+    
+    //DEX
+    @IBAction func DEXpBtn(_ sender: UIButton) {
+        var pm = Int(DEXpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(DEXnLabel.text!)! + 1
+        DEXnLabel.text = String(total)
+        DEXpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func DEXmBtn(_ sender: UIButton) {
+        var pm = Int(DEXpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(DEXnLabel.text!)! - 1
+        DEXnLabel.text = String(total)
+        DEXpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func DEXtpBtn(_ sender: UIButton) {
+        var pm = Int(DEXtLabel.text!)
+        pm = pm! + 1
+        let total = Int(DEXnLabel.text!)! + 1
+        DEXnLabel.text = String(total)
+        DEXtLabel.text = String(pm!)
+    }
+    
+    @IBAction func DEXtmBtn(_ sender: UIButton) {
+        var pm = Int(DEXtLabel.text!)
+        pm = pm! - 1
+        let total = Int(DEXnLabel.text!)! - 1
+        DEXnLabel.text = String(total)
+        DEXtLabel.text = String(pm!)
+    }
+    
+    
+    //APP
+    @IBAction func APPpBtn(_ sender: UIButton) {
+        var pm = Int(APPpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(APPnLabel.text!)! + 1
+        APPnLabel.text = String(total)
+        APPpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func APPmBtn(_ sender: UIButton) {
+        var pm = Int(APPpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(APPnLabel.text!)! - 1
+        APPnLabel.text = String(total)
+        APPpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func APPtpBtn(_ sender: UIButton) {
+        var pm = Int(APPtLabel.text!)
+        pm = pm! + 1
+        let total = Int(APPnLabel.text!)! + 1
+        APPnLabel.text = String(total)
+        APPtLabel.text = String(pm!)
+    }
+    
+    @IBAction func APPtmBtn(_ sender: UIButton) {
+        var pm = Int(APPtLabel.text!)
+        pm = pm! - 1
+        let total = Int(APPnLabel.text!)! - 1
+        APPnLabel.text = String(total)
+        APPtLabel.text = String(pm!)
+    }
+    
+    
+    //SIZ
+    @IBAction func SIZpBtn(_ sender: UIButton) {
+        var pm = Int(SIZpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(SIZnLabel.text!)! + 1
+        SIZnLabel.text = String(total)
+        SIZpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func SIZmBtn(_ sender: UIButton) {
+        var pm = Int(SIZpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(SIZnLabel.text!)! - 1
+        SIZnLabel.text = String(total)
+        SIZpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func SIZtpBtn(_ sender: UIButton) {
+        var pm = Int(SIZtLabel.text!)
+        pm = pm! + 1
+        let total = Int(SIZnLabel.text!)! + 1
+        SIZnLabel.text = String(total)
+        SIZtLabel.text = String(pm!)
+    }
+    
+    @IBAction func SIZtmBtn(_ sender: UIButton) {
+        var pm = Int(SIZtLabel.text!)
+        pm = pm! - 1
+        let total = Int(SIZnLabel.text!)! - 1
+        SIZnLabel.text = String(total)
+        SIZtLabel.text = String(pm!)
+    }
+    
+    
+    //INT
+    @IBAction func INTpBtin(_ sender: UIButton) {
+        var pm = Int(INTpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(INTnLabel.text!)! + 1
+        INTnLabel.text = String(total)
+        INTpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func INTmBtn(_ sender: UIButton) {
+        var pm = Int(INTpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(INTnLabel.text!)! - 1
+        INTnLabel.text = String(total)
+        INTpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func INTtpBtn(_ sender: UIButton) {
+        var pm = Int(INTtLabel.text!)
+        pm = pm! + 1
+        let total = Int(INTnLabel.text!)! + 1
+        INTnLabel.text = String(total)
+        INTtLabel.text = String(pm!)
+    }
+    
+    @IBAction func INTtmBtn(_ sender: UIButton) {
+        var pm = Int(INTtLabel.text!)
+        pm = pm! - 1
+        let total = Int(INTnLabel.text!)! - 1
+        INTnLabel.text = String(total)
+        INTtLabel.text = String(pm!)
+    }
+    
+    
+    //EDU
+    @IBAction func EDUpBtn(_ sender: UIButton) {
+        var pm = Int(EDUpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(EDUnLabel.text!)! + 1
+        EDUnLabel.text = String(total)
+        EDUpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func EDUmBtn(_ sender: UIButton) {
+        var pm = Int(EDUpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(EDUnLabel.text!)! - 1
+        EDUnLabel.text = String(total)
+        EDUpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func EDUtpBtn(_ sender: UIButton) {
+        var pm = Int(EDUtLabel.text!)
+        pm = pm! + 1
+        let total = Int(EDUnLabel.text!)! + 1
+        EDUnLabel.text = String(total)
+        EDUtLabel.text = String(pm!)
+    }
+    
+    @IBAction func EDUtmBtn(_ sender: UIButton) {
+        var pm = Int(EDUtLabel.text!)
+        pm = pm! - 1
+        let total = Int(EDUnLabel.text!)! - 1
+        EDUnLabel.text = String(total)
+        EDUtLabel.text = String(pm!)
+    }
+    
+    
+    //SAN
+    @IBAction func SANpBtn(_ sender: UIButton) {
+        var pm = Int(SANpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(SANnLabel.text!)! + 1
+        SANnLabel.text = String(total)
+        SANpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func SANmBtn(_ sender: UIButton) {
+        var pm = Int(SANpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(SANnLabel.text!)! - 1
+        SANnLabel.text = String(total)
+        SANpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func SANtpBtn(_ sender: UIButton) {
+        var pm = Int(SANtLabel.text!)
+        pm = pm! + 1
+        let total = Int(SANnLabel.text!)! + 1
+        SANnLabel.text = String(total)
+        SANtLabel.text = String(pm!)
+    }
+    
+    @IBAction func SANtmBtn(_ sender: UIButton) {
+        var pm = Int(SANtLabel.text!)
+        pm = pm! - 1
+        let total = Int(SANnLabel.text!)! - 1
+        SANnLabel.text = String(total)
+        SANtLabel.text = String(pm!)
+    }
+    
+    
+    //MP
+    @IBAction func MPpBtn(_ sender: UIButton) {
+        var pm = Int(MPpmLabel.text!)
+        pm = pm! + 1
+        let total = Int(MPnLabel.text!)! + 1
+        MPnLabel.text = String(total)
+        MPpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func MPmBtn(_ sender: UIButton) {
+        var pm = Int(MPpmLabel.text!)
+        pm = pm! - 1
+        let total = Int(MPnLabel.text!)! - 1
+        MPnLabel.text = String(total)
+        MPpmLabel.text = String(pm!)
+    }
+    
+    @IBAction func MPtpBtn(_ sender: UIButton) {
+        var pm = Int(MPtLabel.text!)
+        pm = pm! + 1
+        let total = Int(MPnLabel.text!)! + 1
+        MPnLabel.text = String(total)
+        MPtLabel.text = String(pm!)
+    }
+    
+    @IBAction func MPtmBtn(_ sender: UIButton) {
+        var pm = Int(MPtLabel.text!)
+        pm = pm! - 1
+        let total = Int(MPnLabel.text!)! - 1
+        MPnLabel.text = String(total)
+        MPtLabel.text = String(pm!)
+    }
+    
+    
+    //ｱｲﾃﾞｱ
+    @IBAction func IdeapBtn(_ sender: UIButton) {
+        var pm = Int(IdeapmLabel.text!)
+        pm = pm! + 1
+        let total = Int(IdeanLabel.text!)! + 1
+        IdeanLabel.text = String(total)
+        IdeapmLabel.text = String(pm!)
+    }
+    
+    @IBAction func IdeamBtn(_ sender: UIButton) {
+        var pm = Int(IdeapmLabel.text!)
+        pm = pm! - 1
+        let total = Int(IdeanLabel.text!)! - 1
+        IdeanLabel.text = String(total)
+        IdeapmLabel.text = String(pm!)
+    }
+    
+    @IBAction func IdeatpBtn(_ sender: UIButton) {
+        var pm = Int(IdeatLabel.text!)
+        pm = pm! + 1
+        let total = Int(IdeanLabel.text!)! + 1
+        IdeanLabel.text = String(total)
+        IdeatLabel.text = String(pm!)
+    }
+    
+    @IBAction func IdeatmBtn(_ sender: UIButton) {
+        var pm = Int(IdeatLabel.text!)
+        pm = pm! - 1
+        let total = Int(IdeanLabel.text!)! - 1
+        IdeanLabel.text = String(total)
+        IdeatLabel.text = String(pm!)
+    }
+    
+    
+    //幸運
+    @IBAction func LuckypBtn(_ sender: UIButton) {
+        var pm = Int(LuckypmLabel.text!)
+        pm = pm! + 1
+        let total = Int(LuckynLabel.text!)! + 1
+        LuckynLabel.text = String(total)
+        LuckypmLabel.text = String(pm!)
+    }
+    
+    @IBAction func LuckymBtn(_ sender: UIButton) {
+        var pm = Int(LuckypmLabel.text!)
+        pm = pm! - 1
+        let total = Int(LuckynLabel.text!)! - 1
+        LuckynLabel.text = String(total)
+        LuckypmLabel.text = String(pm!)
+    }
+    
+    @IBAction func LuckytpBtn(_ sender: UIButton) {
+        var pm = Int(LuckytLabel.text!)
+        pm = pm! + 1
+        let total = Int(LuckynLabel.text!)! + 1
+        LuckynLabel.text = String(total)
+        LuckytLabel.text = String(pm!)
+    }
+    
+    @IBAction func LuckytmBtn(_ sender: UIButton) {
+        var pm = Int(LuckytLabel.text!)
+        pm = pm! - 1
+        let total = Int(LuckynLabel.text!)! - 1
+        LuckynLabel.text = String(total)
+        LuckytLabel.text = String(pm!)
+    }
+    
+    
+    //知識
+    @IBAction func KnowledgepBtn(_ sender: UIButton) {
+        var pm = Int(KnowledgepmLabel.text!)
+        pm = pm! + 1
+        let total = Int(KnowledgenLabel.text!)! + 1
+        KnowledgenLabel.text = String(total)
+        KnowledgepmLabel.text = String(pm!)
+    }
+    
+    @IBAction func KnowledgemBtn(_ sender: UIButton) {
+        var pm = Int(KnowledgepmLabel.text!)
+        pm = pm! - 1
+        let total = Int(KnowledgenLabel.text!)! - 1
+        KnowledgenLabel.text = String(total)
+        KnowledgepmLabel.text = String(pm!)
+    }
+    
+    @IBAction func KnowledgetpBtn(_ sender: UIButton) {
+        var pm = Int(KnowledgetLabel.text!)
+        pm = pm! + 1
+        let total = Int(KnowledgenLabel.text!)! + 1
+        KnowledgenLabel.text = String(total)
+        KnowledgetLabel.text = String(pm!)
+    }
+    
+    @IBAction func KnowledgetmBtn(_ sender: UIButton) {
+        var pm = Int(KnowledgetLabel.text!)
+        pm = pm! - 1
+        let total = Int(KnowledgenLabel.text!)! - 1
+        KnowledgenLabel.text = String(total)
+        KnowledgetLabel.text = String(pm!)
+    }
+    
+    
+    //耐久
+    @IBAction func EndurancepBtn(_ sender: UIButton) {
+        var pm = Int(EndurancepmLabel.text!)
+        pm = pm! + 1
+        let total = Int(EndurancenLabel.text!)! + 1
+        EndurancenLabel.text = String(total)
+        EndurancepmLabel.text = String(pm!)
+    }
+    
+    @IBAction func EndurancemBtn(_ sender: UIButton) {
+        var pm = Int(EndurancepmLabel.text!)
+        pm = pm! - 1
+        let total = Int(EndurancenLabel.text!)! - 1
+        EndurancenLabel.text = String(total)
+        EndurancepmLabel.text = String(pm!)
+    }
+    
+    @IBAction func EndurancetpBtn(_ sender: UIButton) {
+        var pm = Int(EndurancetLabel.text!)
+        pm = pm! + 1
+        let total = Int(EndurancenLabel.text!)! + 1
+        EndurancenLabel.text = String(total)
+        EndurancetLabel.text = String(pm!)
+    }
+    
+    @IBAction func EndurancetmBtn(_ sender: UIButton) {
+        var pm = Int(EndurancetLabel.text!)
+        pm = pm! - 1
+        let total = Int(EndurancenLabel.text!)! - 1
+        EndurancenLabel.text = String(total)
+        EndurancetLabel.text = String(pm!)
+    }
+    
+    
+    
+    /*--------------ボタンの処理--------------*/
     @IBAction func tapAllDiesButton(_ sender: Any) {
         backgroundView = makeBackgroundView()
         self.view.addSubview(backgroundView)
@@ -167,7 +721,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    /*--------------ボタンの処理--------------*/
     @objc func onClickMyButton(sender: UIButton) {
         //checkboxが押されたら現在のbuttonのBool値の反対の値が入る(チェックされたらtrue, 外れたらfalseが代入される)
         sender.isSelected = !sender.isSelected
@@ -221,7 +774,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("STRDiseが呼ばれました")
+                print("STRDiesが呼ばれました")
             } else if CONCheckbox.isSelected == true {
                 CONCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -251,7 +804,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("POWDiseが呼ばれました")
+                print("POWDiesが呼ばれました")
             } else if DEXCheckbox.isSelected == true {
                 DEXCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -266,7 +819,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("DEXDiseが呼ばれました")
+                print("DEXDiesが呼ばれました")
             } else if APPCheckbox.isSelected == true {
                 APPCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -281,7 +834,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("APPDiseが呼ばれました")
+                print("APPDiesが呼ばれました")
             } else if SIZCheckbox.isSelected == true {
                 SIZCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -296,7 +849,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("SIZDiseが呼ばれました")
+                print("SIZDiesが呼ばれました")
             } else if INTCheckbox.isSelected == true {
                 INTCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -311,7 +864,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("INTDiseが呼ばれました")
+                print("INTDiesが呼ばれました")
             } else if EDUCheckbox.isSelected == true {
                 EDUCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -326,10 +879,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("EDUDiseが呼ばれました")
+                print("EDUDiesが呼ばれました")
             }
-            
-            
             
             i = i + 1
             print(i)
@@ -446,6 +997,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         INTnLabel.text = String(total)
         IdeaaLabel.text = String(total * 5)
         IdeanLabel.text = String(total * 5)
+        InterestaLabel.text = String(total * 10)
+        InterestnLabel.text = String(total * 10)
     }
     
     
@@ -458,6 +1011,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         EDUnLabel.text = String(total)
         KnowledgeaLabel.text = String(total * 5)
         KnowledgenLabel.text = String(total * 5)
+        JobaLabel.text = String(total * 20)
+        JobnLabel.text = String(total * 20)
     }
     
     
