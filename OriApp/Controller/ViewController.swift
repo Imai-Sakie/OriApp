@@ -9,7 +9,7 @@
 import UIKit
 import CTCheckbox
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     /*--------------STR--------------*/
     @IBOutlet weak var STRnLabel: UILabel!
     @IBOutlet weak var STRpmLabel: UILabel!
@@ -104,6 +104,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var InterestnLabel: UILabel!
     @IBOutlet weak var InterestaLabel: UILabel!
     
+    /*--------------戦闘技能--------------*/
+    @IBOutlet weak var AvoidancesLabel: UILabel!
+    @IBOutlet weak var AvoidancejpTextField: UITextField!
+    @IBOutlet weak var AvoidanceipTextField: UITextField!
+    @IBOutlet weak var AvoidancetLabel: UILabel!
+    
     
     /*--------------checkboxButton--------------*/
     var ALLCheckbox: UIButton!
@@ -127,10 +133,24 @@ class ViewController: UIViewController {
     var CONTotal: Int = 0
     var SIZTotal: Int = 0
     
+    var AvoidanceTotal: Int!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        AvoidancesLabel.text = String(0)
+        AvoidancetLabel.text = String(0)
+        AvoidancejpTextField.delegate = self
+        AvoidancejpTextField.text = ""
+        AvoidanceipTextField.delegate = self
+        AvoidanceipTextField.text = ""
+        AvoidancejpTextField.addTarget(self, action: #selector(self.AvoidanceJPChange(_:)), for: .editingChanged)
+        AvoidanceipTextField.addTarget(self, action: #selector(self.AvoidanceIPChange(_:)), for: .editingChanged)
+        
+        
         
         STRnLabel.text = String(0)
         STRpmLabel.text = String(0)
@@ -207,6 +227,55 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func AvoidanceJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AvoidanceipTextField.text?.isEmpty != true {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(AvoidanceipTextField.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+                print("aaaaaaaa")
+            } else if AvoidanceipTextField.text?.isEmpty == true {
+                AvoidancetLabel.text = AvoidancesLabel.text
+                print("bbbbbbb")
+            }
+        } else {
+            let total = Int(JobnLabel.text!)! - Int(sender.text!)!
+            JobnLabel.text = String(total)
+            
+            if AvoidanceipTextField.text?.isEmpty == true {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+            } else {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)! + Int(AvoidanceipTextField.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+            }
+        }
+    }
+    
+    @objc func AvoidanceIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AvoidancejpTextField.text?.isEmpty != true {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(AvoidancejpTextField.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+            } else if AvoidanceipTextField.text?.isEmpty == true {
+                AvoidancetLabel.text = AvoidancesLabel.text
+            }
+        } else {
+            let total = Int(JobnLabel.text!)! - Int(sender.text!)!
+            JobnLabel.text = String(total)
+            
+            if AvoidancejpTextField.text?.isEmpty == true {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+            } else {
+                AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(AvoidancejpTextField.text!)! + Int(sender.text!)!
+                AvoidancetLabel.text = String(AvoidanceTotal)
+            }
+        }
+    }
+    
     
     
     /*--------------±ボタンの処理--------------*/
