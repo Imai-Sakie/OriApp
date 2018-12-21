@@ -105,10 +105,371 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var InterestaLabel: UILabel!
     
     /*--------------戦闘技能--------------*/
+    //回避
     @IBOutlet weak var AvoidancesLabel: UILabel!
     @IBOutlet weak var AvoidancejpTextField: UITextField!
     @IBOutlet weak var AvoidanceipTextField: UITextField!
     @IBOutlet weak var AvoidancetLabel: UILabel!
+    
+    //キック
+    @IBOutlet weak var KicksLabel: UILabel!
+    @IBOutlet weak var KickjpTextField: UITextField!
+    @IBOutlet weak var KickipTextField: UITextField!
+    @IBOutlet weak var KicktTextField: UILabel!
+    
+    //組み付き
+    @IBOutlet weak var WithsLabel: UILabel!
+    @IBOutlet weak var WithjpTextField: UITextField!
+    @IBOutlet weak var WithipTextField: UITextField!
+    @IBOutlet weak var WithtLabel: UILabel!
+    
+    //パンチ
+    @IBOutlet weak var PunchsLabel: UILabel!
+    @IBOutlet weak var PunchjpTextField: UITextField!
+    @IBOutlet weak var PunchipTextField: UITextField!
+    @IBOutlet weak var PunchtLabel: UILabel!
+    
+    //頭突き
+    @IBOutlet weak var GlasgowsLabel: UILabel!
+    @IBOutlet weak var GlasgowjpTextField: UITextField!
+    @IBOutlet weak var GlasgowipTextField: UITextField!
+    @IBOutlet weak var GlasgowtLabel: UILabel!
+    
+    //投擲
+    @IBOutlet weak var ThrowingsLabel: UILabel!
+    @IBOutlet weak var ThrowingjpTextField: UITextField!
+    @IBOutlet weak var ThrowingipTextField: UITextField!
+    @IBOutlet weak var ThrowingtLabel: UILabel!
+    
+    //ﾏｰｼｬﾙｱｰﾂ
+    @IBOutlet weak var MartialsLabel: UILabel!
+    @IBOutlet weak var MartialjpTextField: UITextField!
+    @IBOutlet weak var MartialipTextField: UITextField!
+    @IBOutlet weak var MartialtLabel: UILabel!
+    
+    //拳銃
+    @IBOutlet weak var PistolsLabel: UILabel!
+    @IBOutlet weak var PistoljpTextField: UITextField!
+    @IBOutlet weak var PistolipTextField: UITextField!
+    @IBOutlet weak var PistoltLabel: UILabel!
+    
+    //ｻﾌﾞﾏｼﾝｶﾞﾝ
+    @IBOutlet weak var SubGunsLabel: UILabel!
+    @IBOutlet weak var SubGunjpTextField: UITextField!
+    @IBOutlet weak var SubGunipTextField: UITextField!
+    
+    @IBOutlet weak var SubGuntLabel: UILabel!
+    
+    //ｼｮｯﾄｶﾞﾝ
+    @IBOutlet weak var ShotgunsLabel: UILabel!
+    @IBOutlet weak var ShotgunjpTextField: UITextField!
+    @IBOutlet weak var ShotgunipTextField: UITextField!
+    @IBOutlet weak var ShotguntLabel: UILabel!
+    
+    //マシンガン
+    @IBOutlet weak var MachinegunsLabel: UILabel!
+    @IBOutlet weak var MachinegunjpTextField: UITextField!
+    @IBOutlet weak var MachinegunipTextField: UITextField!
+    @IBOutlet weak var MachineguntLabel: UILabel!
+    
+    //ライフル
+    @IBOutlet weak var RiflesLabel: UILabel!
+    @IBOutlet weak var RiflejpTextField: UITextField!
+    @IBOutlet weak var RifleipTextField: UITextField!
+    @IBOutlet weak var RifletLabel: UILabel!
+    
+    
+    
+    /*--------------探索技能--------------*/
+    //応急手当て
+    @IBOutlet weak var FirstaidsLabel: UILabel!
+    @IBOutlet weak var FirstaidjpTextField: UITextField!
+    @IBOutlet weak var FirstaidipTextField: UITextField!
+    @IBOutlet weak var FirstaidtLabel: UILabel!
+    
+    //鍵開け
+    @IBOutlet weak var KeyopensLabel: UILabel!
+    @IBOutlet weak var KeyopenjpTextField: UITextField!
+    @IBOutlet weak var KeyopenipTextField: UITextField!
+    @IBOutlet weak var KeyopentLabel: UILabel!
+    
+    //隠す
+    @IBOutlet weak var HidesLabel: UILabel!
+    @IBOutlet weak var HidejpTextField: UITextField!
+    @IBOutlet weak var HideipTextField: UITextField!
+    @IBOutlet weak var HidetLabel: UILabel!
+    
+    //隠れる
+    @IBOutlet weak var HideoutsLabel: UILabel!
+    @IBOutlet weak var HideoutjpTextField: UITextField!
+    @IBOutlet weak var HideoutipTextField: UITextField!
+    @IBOutlet weak var HideouttLabel: UILabel!
+    
+    //聞き耳
+    @IBOutlet weak var ListensLabel: UILabel!
+    @IBOutlet weak var ListenjpTextField: UITextField!
+    @IBOutlet weak var ListenipTextField: UITextField!
+    @IBOutlet weak var ListentLabel: UILabel!
+    
+    //忍び歩き
+    @IBOutlet weak var WalksLabel: UILabel!
+    @IBOutlet weak var WalkjpTextField: UITextField!
+    @IBOutlet weak var WalkipTextField: UITextField!
+    @IBOutlet weak var WalktLabel: UILabel!
+    
+    //写真術
+    @IBOutlet weak var PhotographysLabel: UILabel!
+    @IBOutlet weak var PhotographyjpTextField: UITextField!
+    @IBOutlet weak var PhotographyipTextField: UITextField!
+    @IBOutlet weak var PhotographytLabel: UILabel!
+    
+    //精神分析
+    @IBOutlet weak var PsychoanalysissLabel: UILabel!
+    @IBOutlet weak var PsychoanalysisjpTextField: UITextField!
+    @IBOutlet weak var PsychoanalysisipTextField: UITextField!
+    @IBOutlet weak var PsychoanalysistLabel: UILabel!
+    
+    //追跡
+    @IBOutlet weak var ChasesLabel: UILabel!
+    @IBOutlet weak var ChasejpTextField: UITextField!
+    @IBOutlet weak var ChaseipTextField: UITextField!
+    @IBOutlet weak var ChasetLabel: UILabel!
+    
+    //登攀
+    @IBOutlet weak var ClimbingsLabel: UILabel!
+    @IBOutlet weak var ClimbingjpTextField: UITextField!
+    @IBOutlet weak var ClimbingipTextField: UITextField!
+    @IBOutlet weak var ClimgingtLabel: UILabel!
+    
+    
+    //図書館
+    @IBOutlet weak var LibrarysLabel: UILabel!
+    @IBOutlet weak var LibraryjpTextField: UITextField!
+    @IBOutlet weak var LibraryipTextField: UITextField!
+    @IBOutlet weak var LibrarytLabel: UILabel!
+    
+    //目星
+    @IBOutlet weak var EducatedguesssLabel: UILabel!
+    @IBOutlet weak var EducatedgusessjpTextField: UITextField!
+    @IBOutlet weak var EducatedguessipTextField: UITextField!
+    @IBOutlet weak var EducatedguesstLabel: UILabel!
+    
+    
+    /*--------------行動技能--------------*/
+    //運転
+    @IBOutlet weak var DrivesLabel: UILabel!
+    @IBOutlet weak var DrivejpTextField: UITextField!
+    @IBOutlet weak var DriveipTextField: UITextField!
+    @IBOutlet weak var DrivetLabel: UILabel!
+    
+    //機械修理
+    @IBOutlet weak var MRepairsLabel: UILabel!
+    @IBOutlet weak var MRepairjpTextField: UITextField!
+    @IBOutlet weak var MRepairipTextField: UITextField!
+    @IBOutlet weak var MRepairtLabel: UILabel!
+    
+    //重機械操作
+    @IBOutlet weak var OperationsLabel: UILabel!
+    @IBOutlet weak var OperationjpTextField: UITextField!
+    @IBOutlet weak var OperationipTextField: UITextField!
+    @IBOutlet weak var OperationtLabel: UILabel!
+    
+    //乗馬
+    @IBOutlet weak var RidingsLabel: UILabel!
+    @IBOutlet weak var RidingjpTextField: UITextField!
+    @IBOutlet weak var RidingipTextField: UITextField!
+    @IBOutlet weak var RidingtLabel: UILabel!
+    
+    //水泳
+    @IBOutlet weak var SwimsLabel: UILabel!
+    @IBOutlet weak var SwimjpTextField: UITextField!
+    @IBOutlet weak var SwimipTextField: UITextField!
+    @IBOutlet weak var SwimtLabel: UILabel!
+    
+    //製作
+    @IBOutlet weak var ProductionsLabel: UILabel!
+    @IBOutlet weak var ProductionjpTextField: UITextField!
+    @IBOutlet weak var ProductionipTextField: UITextField!
+    @IBOutlet weak var ProductiontLabel: UILabel!
+    
+    //操縦
+    @IBOutlet weak var ControlsLabel: UILabel!
+    @IBOutlet weak var ControljpTextField: UITextField!
+    @IBOutlet weak var ControlipTextField: UITextField!
+    @IBOutlet weak var ControltLabel: UILabel!
+    
+    //跳躍
+    @IBOutlet weak var LeapsLabel: UILabel!
+    @IBOutlet weak var LeapjpTextField: UITextField!
+    @IBOutlet weak var LeapipTextField: UITextField!
+    @IBOutlet weak var LeaptLabel: UILabel!
+    
+    //電気修理
+    @IBOutlet weak var ERepairsLabel: UILabel!
+    @IBOutlet weak var ERepairjpTextField: UITextField!
+    @IBOutlet weak var ERepairipTextField: UITextField!
+    @IBOutlet weak var ERepairtLabel: UILabel!
+    
+    //ナビゲート
+    @IBOutlet weak var NavisLabel: UILabel!
+    @IBOutlet weak var NavijpTextField: UITextField!
+    @IBOutlet weak var NaviipTextField: UITextField!
+    @IBOutlet weak var NavitLabel: UILabel!
+    
+    //変装
+    @IBOutlet weak var DisguisesLabel: UILabel!
+    @IBOutlet weak var DisguisejpTextField: UITextField!
+    @IBOutlet weak var DisguiseipTextField: UITextField!
+    @IBOutlet weak var DisguisetLabel: UILabel!
+    
+    
+    /*--------------交渉技能--------------*/
+    //言いくるめ
+    @IBOutlet weak var TalkintosLabel: UILabel!
+    @IBOutlet weak var TalkintojpTextField: UITextField!
+    @IBOutlet weak var TalkintoipTextField: UITextField!
+    @IBOutlet weak var TalkintotLabel: UILabel!
+    
+    //信用
+    @IBOutlet weak var TrustsLabel: UILabel!
+    @IBOutlet weak var TrustjpaTextField: UITextField!
+    @IBOutlet weak var TrustipTextField: UITextField!
+    @IBOutlet weak var TrusttLabel: UILabel!
+    
+    //説得
+    @IBOutlet weak var PersuasionsLabel: UILabel!
+    @IBOutlet weak var PersuasionjpTextField: UITextField!
+    @IBOutlet weak var PersuasionipTextField: UITextField!
+    @IBOutlet weak var PersuasiontLabel: UILabel!
+    
+    //値切り
+    @IBOutlet weak var BargainsLabel: UILabel!
+    @IBOutlet weak var BargainjpTextField: UITextField!
+    @IBOutlet weak var BargainipTextField: UITextField!
+    @IBOutlet weak var BargaintLabel: UILabel!
+    
+    //母国語
+    @IBOutlet weak var MTonguesLabel: UILabel!
+    @IBOutlet weak var MTonguejpTextField: UITextField!
+    @IBOutlet weak var MTongueipTextField: UITextField!
+    @IBOutlet weak var MTonguetLabel: UILabel!
+    
+    
+    /*--------------知識技能--------------*/
+    //医学
+    @IBOutlet weak var MedicinesLabel: UILabel!
+    @IBOutlet weak var MedicinejpTextField: UITextField!
+    @IBOutlet weak var MedicineipTextField: UITextField!
+    @IBOutlet weak var MedicinetLabel: UILabel!
+    
+    //オカルト
+    @IBOutlet weak var OccultsLabel: UILabel!
+    @IBOutlet weak var OccultjpTextField: UITextField!
+    @IBOutlet weak var OccultipTextField: UITextField!
+    @IBOutlet weak var OcculttLabel: UILabel!
+    
+    //化学
+    @IBOutlet weak var ChemistrysLabel: UILabel!
+    @IBOutlet weak var ChemistryjpTextField: UITextField!
+    @IBOutlet weak var ChemistryipTextField: UITextField!
+    @IBOutlet weak var ChemistrytLabel: UILabel!
+    
+    //ｸﾄｩﾙﾌ神話
+    @IBOutlet weak var CthulhusLabel: UILabel!
+    @IBOutlet weak var CthulhujpTextField: UITextField!
+    @IBOutlet weak var CthulhuipTextField: UITextField!
+    @IBOutlet weak var CthulhutLabel: UILabel!
+    
+    //芸術
+    @IBOutlet weak var ArtsLabel: UILabel!
+    @IBOutlet weak var ArtjpTextField: UITextField!
+    @IBOutlet weak var ArtipTextField: UITextField!
+    @IBOutlet weak var ArttLabel: UILabel!
+    
+    //経理
+    @IBOutlet weak var AccountingsLabel: UILabel!
+    @IBOutlet weak var AccountingjpTextField: UITextField!
+    @IBOutlet weak var AccountingipTextField: UITextField!
+    @IBOutlet weak var AccountingtLabel: UILabel!
+    
+    //考古学
+    @IBOutlet weak var ArcheologysLabel: UILabel!
+    @IBOutlet weak var ArcheologyjpTextField: UITextField!
+    @IBOutlet weak var ArcheologyipTextField: UITextField!
+    @IBOutlet weak var ArcheologytLabel: UILabel!
+    
+    //ｺﾝﾋﾟｭｰﾀｰ
+    @IBOutlet weak var ComputersLabel: UILabel!
+    @IBOutlet weak var ComputerjpTextLabel: UITextField!
+    @IBOutlet weak var ComputeripTextLabel: UITextField!
+    @IBOutlet weak var ComputertLabel: UILabel!
+    
+    //心理学
+    @IBOutlet weak var PsychologysLabel: UILabel!
+    @IBOutlet weak var PsychologyjpTextField: UITextField!
+    @IBOutlet weak var PsychologyipTextField: UITextField!
+    @IBOutlet weak var PsychologytLabel: UILabel!
+    
+    //人類学
+    @IBOutlet weak var AnthropologysLabel: UILabel!
+    @IBOutlet weak var AnthropologyjpTextField: UITextField!
+    @IBOutlet weak var AnthropologyipTextField: UITextField!
+    @IBOutlet weak var AnthropologytLabel: UILabel!
+    
+    //生物学
+    @IBOutlet weak var BiologysLabel: UILabel!
+    @IBOutlet weak var BiologyjpTextField: UITextField!
+    @IBOutlet weak var BiologyipTextField: UITextField!
+    @IBOutlet weak var BiologytLabel: UILabel!
+    
+    //地質学
+    @IBOutlet weak var GeologysLabel: UILabel!
+    @IBOutlet weak var GeologyjpTextField: UITextField!
+    @IBOutlet weak var GeologyipTextField: UITextField!
+    @IBOutlet weak var GeologytLabel: UILabel!
+    
+    //電子工学
+    @IBOutlet weak var EEsLabel: UILabel!
+    @IBOutlet weak var EEjpTextField: UITextField!
+    @IBOutlet weak var EEipTextField: UITextField!
+    @IBOutlet weak var EEtLabel: UILabel!
+    
+    //天文学
+    @IBOutlet weak var AstronomysLabel: UILabel!
+    @IBOutlet weak var AstronomyjpTextField: UITextField!
+    @IBOutlet weak var AstronomyipTextField: UITextField!
+    @IBOutlet weak var AstronomytLabel: UILabel!
+    
+    //博物学
+    @IBOutlet weak var NHistorysLabel: UILabel!
+    @IBOutlet weak var NHistoryjpTextField: UITextField!
+    @IBOutlet weak var NHistoryipTextField: UITextField!
+    @IBOutlet weak var NHistorytLabel: UILabel!
+    
+    //物理学
+    @IBOutlet weak var PhysicssLabel: UILabel!
+    @IBOutlet weak var PhysicsjpTextField: UITextField!
+    @IBOutlet weak var PhysicsipTextField: UITextField!
+    @IBOutlet weak var PhysicstLabel: UILabel!
+    
+    //法律
+    @IBOutlet weak var LawsLabel: UILabel!
+    @IBOutlet weak var LawjpTextField: UITextField!
+    @IBOutlet weak var LawipTextField: UITextField!
+    @IBOutlet weak var LawtLabel: UILabel!
+    
+    //薬学
+    @IBOutlet weak var PharmacysLabel: UILabel!
+    @IBOutlet weak var PharmacyjpTextField: UITextField!
+    @IBOutlet weak var PharmacyipTextField: UITextField!
+    @IBOutlet weak var PharmacytLabel: UILabel!
+    
+    //歴史
+    @IBOutlet weak var HistorysLabel: UILabel!
+    @IBOutlet weak var HistoryjpTextField: UITextField!
+    @IBOutlet weak var HistoryipTextField: UITextField!
+    @IBOutlet weak var HistorytLabel: UILabel!
+    
     
     
     /*--------------checkboxButton--------------*/
@@ -140,93 +501,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        
-        AvoidancesLabel.text = String(0)
-        AvoidancetLabel.text = String(0)
+       
         AvoidancejpTextField.delegate = self
-        AvoidancejpTextField.text = ""
         AvoidanceipTextField.delegate = self
-        AvoidanceipTextField.text = ""
+        
         AvoidancejpTextField.addTarget(self, action: #selector(self.AvoidanceJPChange(_:)), for: .editingChanged)
         AvoidanceipTextField.addTarget(self, action: #selector(self.AvoidanceIPChange(_:)), for: .editingChanged)
         
         
-        
-        STRnLabel.text = String(0)
-        STRpmLabel.text = String(0)
-        STRtLabel.text = String(0)
-        STRaLabel.text = String(0)
-        
-        CONnLabel.text = String(0)
-        CONpmLabel.text = String(0)
-        CONtLabel.text = String(0)
-        CONaLabel.text = String(0)
-        
-        POWnLabel.text = String(0)
-        POWpmLabel.text = String(0)
-        POWtLabel.text = String(0)
-        POWaLabel.text = String(0)
-        
-        DEXnLabel.text = String(0)
-        DEXpmLabel.text = String(0)
-        DEXtLabel.text = String(0)
-        DEXaLabel.text = String(0)
-        
-        APPnLabel.text = String(0)
-        APPpmLabel.text = String(0)
-        APPtLabel.text = String(0)
-        APPaLabel.text = String(0)
-        
-        SIZnLabel.text = String(0)
-        SIZpmLabel.text = String(0)
-        SIZtLabel.text = String(0)
-        SIZaLabel.text = String(0)
-        
-        INTnLabel.text = String(0)
-        INTpmLabel.text = String(0)
-        INTtLabel.text = String(0)
-        INTaLabel.text = String(0)
-        
-        EDUnLabel.text = String(0)
-        EDUpmLabel.text = String(0)
-        EDUtLabel.text = String(0)
-        EDUaLabel.text = String(0)
-        
-        SANnLabel.text = String(0)
-        SANpmLabel.text = String(0)
-        SANtLabel.text = String(0)
-        SANaLabel.text = String(0)
-        
-        MPnLabel.text = String(0)
-        MPpmLabel.text = String(0)
-        MPtLabel.text = String(0)
-        MPaLabel.text = String(0)
-        
-        IdeanLabel.text = String(0)
-        IdeapmLabel.text = String(0)
-        IdeatLabel.text = String(0)
-        IdeaaLabel.text = String(0)
-        
-        LuckynLabel.text = String(0)
-        LuckypmLabel.text = String(0)
-        LuckytLabel.text = String(0)
-        LuckyaLabel.text = String(0)
-        
-        KnowledgenLabel.text = String(0)
-        KnowledgepmLabel.text = String(0)
-        KnowledgetLabel.text = String(0)
-        KnowledgeaLabel.text = String(0)
-        
-        EndurancenLabel.text = String(0)
-        EndurancepmLabel.text = String(0)
-        EndurancetLabel.text = String(0)
-        EnduranceaLabel.text = String(0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @objc func AvoidanceJPChange(_ sender: UITextField) {
         if sender.text?.isEmpty == true {
@@ -252,6 +541,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
     
     @objc func AvoidanceIPChange(_ sender: UITextField) {
         if sender.text?.isEmpty == true {
@@ -1018,6 +1308,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let total = rnd1 + rnd2 + rnd3
         DEXaLabel.text = String(total)
         DEXnLabel.text = String(total)
+        AvoidancesLabel.text = String(total * 2)
+        AvoidancetLabel.text = String(total * 2)
     }
     
     
@@ -1078,8 +1370,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let total = rnd1 + rnd2 + rnd3 + 3
         EDUaLabel.text = String(total)
         EDUnLabel.text = String(total)
-        KnowledgeaLabel.text = String(total * 5)
-        KnowledgenLabel.text = String(total * 5)
+        if total > 100 {
+            KnowledgeaLabel.text = String(99)
+            KnowledgenLabel.text = String(99)
+        } else {
+            KnowledgeaLabel.text = String(total * 5)
+            KnowledgenLabel.text = String(total * 5)
+        }
         JobaLabel.text = String(total * 20)
         JobnLabel.text = String(total * 20)
     }
