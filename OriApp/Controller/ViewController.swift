@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var KicksLabel: UILabel!
     @IBOutlet weak var KickjpTextField: UITextField!
     @IBOutlet weak var KickipTextField: UITextField!
-    @IBOutlet weak var KicktTextField: UILabel!
+    @IBOutlet weak var KicktLabel: UILabel!
     
     //組み付き
     @IBOutlet weak var WithsLabel: UILabel!
@@ -239,7 +239,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ClimbingsLabel: UILabel!
     @IBOutlet weak var ClimbingjpTextField: UITextField!
     @IBOutlet weak var ClimbingipTextField: UITextField!
-    @IBOutlet weak var ClimgingtLabel: UILabel!
+    @IBOutlet weak var ClimbingtLabel: UILabel!
     
     
     //図書館
@@ -250,7 +250,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //目星
     @IBOutlet weak var EducatedguesssLabel: UILabel!
-    @IBOutlet weak var EducatedgusessjpTextField: UITextField!
+    @IBOutlet weak var EducatedguessjpTextField: UITextField!
     @IBOutlet weak var EducatedguessipTextField: UITextField!
     @IBOutlet weak var EducatedguesstLabel: UILabel!
     
@@ -332,7 +332,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //信用
     @IBOutlet weak var TrustsLabel: UILabel!
-    @IBOutlet weak var TrustjpaTextField: UITextField!
+    @IBOutlet weak var TrustjpTextField: UITextField!
     @IBOutlet weak var TrustipTextField: UITextField!
     @IBOutlet weak var TrusttLabel: UILabel!
     
@@ -400,8 +400,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //ｺﾝﾋﾟｭｰﾀｰ
     @IBOutlet weak var ComputersLabel: UILabel!
-    @IBOutlet weak var ComputerjpTextLabel: UITextField!
-    @IBOutlet weak var ComputeripTextLabel: UITextField!
+    @IBOutlet weak var ComputerjpTextField: UITextField!
+    @IBOutlet weak var ComputeripTextField: UITextField!
     @IBOutlet weak var ComputertLabel: UILabel!
     
     //心理学
@@ -471,7 +471,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var HistorytLabel: UILabel!
     
     
-    
     /*--------------checkboxButton--------------*/
     var ALLCheckbox: UIButton!
     var STRCheckbox: UIButton!
@@ -494,20 +493,266 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var CONTotal: Int = 0
     var SIZTotal: Int = 0
     
+    var JPtotal: Int = 0
+    var IPtotal: Int = 0
+    
+    //計算用
     var AvoidanceTotal: Int!
+    var KickTotal: Int!
+    var WithTotal: Int!
+    var PunchTotal: Int!
+    var GlasgowTotal: Int!
+    var ThrowingTotal: Int!
+    var MartialTotal: Int!
+    var PistolTotal: Int!
+    var SubGunTotal: Int!
+    var ShotgunTotal: Int!
+    var MachinegunTotal: Int!
+    var RifleTotal: Int!
+    var FirstaidTotal: Int!
+    var KeyopenTotal: Int!
+    var HideTotal: Int!
+    var HideoutTotal: Int!
+    var ListenTotal: Int!
+    var WalkTotal: Int!
+    var PhotographyTotal: Int!
+    var PsychoanalysisTotal: Int!
+    var ChaseTotal: Int!
+    var ClimbingTotal: Int!
+    var LibraryTotal: Int!
+    var EducatedguessTotal: Int!
+    var DriveTotal: Int!
+    var MRepairTotal: Int!
+    var OperationTotal: Int!
+    var RidingTotal: Int!
+    var SwimTotal: Int!
+    var ProductionTotal: Int!
+    var ControlTotal: Int!
+    var LeapTotal: Int!
+    var ERepairTotal: Int!
+    var NaviTotal: Int!
+    var DisguiseTotal: Int!
+    var TalkintoTotal: Int!
+    var TrustTotal: Int!
+    var PersuasionTotal: Int!
+    var BargainTotal: Int!
+    var MTongueTotal: Int!
+    var MedicineTotal: Int!
+    var OccultTotal: Int!
+    var ChemistryTotal: Int!
+    var CthulhuTotal: Int!
+    var ArtTotal: Int!
+    var AccountingTotal: Int!
+    var ArcheologyTotal: Int!
+    var ComputerTotal: Int!
+    var PsychologyTotal: Int!
+    var AnthropologyTotal: Int!
+    var BiologyTotal: Int!
+    var GeologyTotal: Int!
+    var EETotal: Int!
+    var AstronomyTotal: Int!
+    var NHistoryTotal: Int!
+    var PhysicsTotal: Int!
+    var LawTotal: Int!
+    var PharmacyTotal: Int!
+    var HistoryTotal: Int!
+    
+    
+    //for文回す用
+    @IBOutlet var TextFieldjpArray: [UITextField]!
+    @IBOutlet var TextFieldipArray: [UITextField]!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-       
-        AvoidancejpTextField.delegate = self
-        AvoidanceipTextField.delegate = self
         
+        //delegateの適用
+        for tfjp in TextFieldjpArray {
+            tfjp.delegate = self
+            tfjp.keyboardType = UIKeyboardType.numberPad
+        }
+        for tfip in TextFieldipArray {
+            tfip.delegate = self
+            tfip.keyboardType = UIKeyboardType.numberPad
+        }
+        
+        //TextFieldの監視
         AvoidancejpTextField.addTarget(self, action: #selector(self.AvoidanceJPChange(_:)), for: .editingChanged)
         AvoidanceipTextField.addTarget(self, action: #selector(self.AvoidanceIPChange(_:)), for: .editingChanged)
         
+        KickjpTextField.addTarget(self, action: #selector(self.KickJPChange(_:)), for: .editingChanged)
+        KickipTextField.addTarget(self, action: #selector(self.KickIPChange(_:)), for: .editingChanged)
+        
+        WithjpTextField.addTarget(self, action: #selector(self.WithJPChange(_:)), for: .editingChanged)
+        WithipTextField.addTarget(self, action: #selector(self.WithIPChange(_:)), for: .editingChanged)
+        
+        PunchjpTextField.addTarget(self, action: #selector(self.PunchJPChange(_:)), for: .editingChanged)
+        PunchipTextField.addTarget(self, action: #selector(self.PunchIPChange(_:)), for: .editingChanged)
+        
+        GlasgowjpTextField.addTarget(self, action: #selector(self.GlasgowJPChange(_:)), for: .editingChanged)
+        GlasgowipTextField.addTarget(self, action: #selector(self.GlasgowIPChange(_:)), for: .editingChanged)
+        
+        ThrowingjpTextField.addTarget(self, action: #selector(self.ThrowingJPChange(_:)), for: .editingChanged)
+        ThrowingipTextField.addTarget(self, action: #selector(self.ThrowingIPChange(_:)), for: .editingChanged)
+        
+        MartialjpTextField.addTarget(self, action: #selector(self.MartialJPChange(_:)), for: .editingChanged)
+        MartialipTextField.addTarget(self, action: #selector(self.MartialIPChange(_:)), for: .editingChanged)
+        
+        PistoljpTextField.addTarget(self, action: #selector(self.PistolJPChange(_:)), for: .editingChanged)
+        PistolipTextField.addTarget(self, action: #selector(self.PistolIPChange(_:)), for: .editingChanged)
+        
+        ShotgunjpTextField.addTarget(self, action: #selector(self.ShotgunJPChange(_:)), for: .editingChanged)
+        ShotgunipTextField.addTarget(self, action: #selector(self.ShotgunIPChange(_:)), for: .editingChanged)
+        
+        MachinegunjpTextField.addTarget(self, action: #selector(self.MachinegunJPChange(_:)), for: .editingChanged)
+        MachinegunipTextField.addTarget(self, action: #selector(self.MachinegunIPChange(_:)), for: .editingChanged)
+        
+        RiflejpTextField.addTarget(self, action: #selector(self.RifleJPChange(_:)), for: .editingChanged)
+        RifleipTextField.addTarget(self, action: #selector(self.RifleIPChange(_:)), for: .editingChanged)
+        
+        FirstaidjpTextField.addTarget(self, action: #selector(self.FirstaidJPChange(_:)), for: .editingChanged)
+        FirstaidipTextField.addTarget(self, action: #selector(self.FirstaidIPChange(_:)), for: .editingChanged)
+        
+        KeyopenjpTextField.addTarget(self, action: #selector(self.KeyopenJPChange(_:)), for: .editingChanged)
+        KeyopenipTextField.addTarget(self, action: #selector(self.KeyopenIPChange(_:)), for: .editingChanged)
+        
+        HidejpTextField.addTarget(self, action: #selector(self.HideJPChange(_:)), for: .editingChanged)
+        HideipTextField.addTarget(self, action: #selector(self.HideIPChange(_:)), for: .editingChanged)
+        
+        HideoutjpTextField.addTarget(self, action: #selector(self.HideoutJPChange(_:)), for: .editingChanged)
+        HideoutipTextField.addTarget(self, action: #selector(self.HideoutIPChange(_:)), for: .editingChanged)
+        
+        ListenjpTextField.addTarget(self, action: #selector(self.ListenJPChange(_:)), for: .editingChanged)
+        ListenipTextField.addTarget(self, action: #selector(self.ListenIPChange(_:)), for: .editingChanged)
+        
+        WalkjpTextField.addTarget(self, action: #selector(self.WalkJPChange(_:)), for: .editingChanged)
+        WalkipTextField.addTarget(self, action: #selector(self.WalkIPChange(_:)), for: .editingChanged)
+        
+        PhotographyjpTextField.addTarget(self, action: #selector(self.PhotographyJPChange(_:)), for: .editingChanged)
+        PhotographyipTextField.addTarget(self, action: #selector(self.PhotographyIPChange(_:)), for: .editingChanged)
+        
+        PsychoanalysisjpTextField.addTarget(self, action: #selector(self.PsychoanalysisJPChange(_:)), for: .editingChanged)
+        PsychoanalysisipTextField.addTarget(self, action: #selector(self.PsychoanalysisIPChange(_:)), for: .editingChanged)
+        
+        ChasejpTextField.addTarget(self, action: #selector(self.ChaseJPChange(_:)), for: .editingChanged)
+        ChaseipTextField.addTarget(self, action: #selector(self.ChaseIPChange(_:)), for: .editingChanged)
+        
+        ClimbingjpTextField.addTarget(self, action: #selector(self.ClimbingJPChange(_:)), for: .editingChanged)
+        ClimbingipTextField.addTarget(self, action: #selector(self.ClimbingIPChange(_:)), for: .editingChanged)
+        
+        LibraryjpTextField.addTarget(self, action: #selector(self.LibraryJPChange(_:)), for: .editingChanged)
+        LibraryipTextField.addTarget(self, action: #selector(self.LibraryIPChange(_:)), for: .editingChanged)
+        
+        EducatedguessjpTextField.addTarget(self, action: #selector(self.EducatedguessJPChange(_:)), for: .editingChanged)
+        EducatedguessipTextField.addTarget(self, action: #selector(self.EducatedguessIPChange(_:)), for: .editingChanged)
+        
+        DrivejpTextField.addTarget(self, action: #selector(self.DriveJPChange(_:)), for: .editingChanged)
+        DriveipTextField.addTarget(self, action: #selector(self.DriveIPChange(_:)), for: .editingChanged)
+        
+        MRepairjpTextField.addTarget(self, action: #selector(self.MRepairJPChange(_:)), for: .editingChanged)
+        MRepairipTextField.addTarget(self, action: #selector(self.MRepairIPChange(_:)), for: .editingChanged)
+        
+        OperationjpTextField.addTarget(self, action: #selector(self.OperationJPChange(_:)), for: .editingChanged)
+        OperationipTextField.addTarget(self, action: #selector(self.OperationIPChange(_:)), for: .editingChanged)
+        
+        RidingjpTextField.addTarget(self, action: #selector(self.RidingJPChange(_:)), for: .editingChanged)
+        RidingipTextField.addTarget(self, action: #selector(self.RidingIPChange(_:)), for: .editingChanged)
+        
+        SwimjpTextField.addTarget(self, action: #selector(self.SwimJPChange(_:)), for: .editingChanged)
+        SwimipTextField.addTarget(self, action: #selector(self.SwimIPChange(_:)), for: .editingChanged)
+        
+        ProductionjpTextField.addTarget(self, action: #selector(self.ProductionJPChange(_:)), for: .editingChanged)
+        ProductionipTextField.addTarget(self, action: #selector(self.ProductionIPChange(_:)), for: .editingChanged)
+        
+        ControljpTextField.addTarget(self, action: #selector(self.ControlJPChange(_:)), for: .editingChanged)
+        ControlipTextField.addTarget(self, action: #selector(self.ControlIPChange(_:)), for: .editingChanged)
+        
+        LeapjpTextField.addTarget(self, action: #selector(self.LeapJPChange(_:)), for: .editingChanged)
+        LeapipTextField.addTarget(self, action: #selector(self.LeapIPChange(_:)), for: .editingChanged)
+        
+        ERepairjpTextField.addTarget(self, action: #selector(self.ERepairJPChange(_:)), for: .editingChanged)
+        ERepairipTextField.addTarget(self, action: #selector(self.ERepairIPChange(_:)), for: .editingChanged)
+        
+        NavijpTextField.addTarget(self, action: #selector(self.NaviJPChange(_:)), for: .editingChanged)
+        NaviipTextField.addTarget(self, action: #selector(self.NaviIPChange(_:)), for: .editingChanged)
+        
+        DisguisejpTextField.addTarget(self, action: #selector(self.DisguiseJPChange(_:)), for: .editingChanged)
+        DisguiseipTextField.addTarget(self, action: #selector(self.DisguiseIPChange(_:)), for: .editingChanged)
+        
+        TalkintojpTextField.addTarget(self, action: #selector(self.TalkintoJPChange(_:)), for: .editingChanged)
+        TalkintoipTextField.addTarget(self, action: #selector(self.TalkintoIPChange(_:)), for: .editingChanged)
+        
+        TrustjpTextField.addTarget(self, action: #selector(self.TrustJPChange(_:)), for: .editingChanged)
+        TrustipTextField.addTarget(self, action: #selector(self.TrustIPChange(_:)), for: .editingChanged)
+        
+        PersuasionjpTextField.addTarget(self, action: #selector(self.PersuasionJPChange(_:)), for: .editingChanged)
+        PersuasionipTextField.addTarget(self, action: #selector(self.PersuasionIPChange(_:)), for: .editingChanged)
+        
+        BargainjpTextField.addTarget(self, action: #selector(self.BargainJPChange(_:)), for: .editingChanged)
+        BargainipTextField.addTarget(self, action: #selector(self.BargainIPChange(_:)), for: .editingChanged)
+        
+        MTonguejpTextField.addTarget(self, action: #selector(self.MTongueJPChange(_:)), for: .editingChanged)
+        MTongueipTextField.addTarget(self, action: #selector(self.MTongueIPChange(_:)), for: .editingChanged)
+        
+        MedicinejpTextField.addTarget(self, action: #selector(self.MedicineJPChange(_:)), for: .editingChanged)
+        MedicineipTextField.addTarget(self, action: #selector(self.MedicineIPChange(_:)), for: .editingChanged)
+        
+        OccultjpTextField.addTarget(self, action: #selector(self.OccultJPChange(_:)), for: .editingChanged)
+        OccultipTextField.addTarget(self, action: #selector(self.OccultIPChange(_:)), for: .editingChanged)
+        
+        ChemistryjpTextField.addTarget(self, action: #selector(self.ChemistryJPChange(_:)), for: .editingChanged)
+        ChemistryipTextField.addTarget(self, action: #selector(self.ChemistryIPChange(_:)), for: .editingChanged)
+        
+        CthulhujpTextField.addTarget(self, action: #selector(self.CthulhuJPChange(_:)), for: .editingChanged)
+        CthulhuipTextField.addTarget(self, action: #selector(self.CthulhuIPChange(_:)), for: .editingChanged)
+        
+        ArtjpTextField.addTarget(self, action: #selector(self.ArtJPChange(_:)), for: .editingChanged)
+        ArtipTextField.addTarget(self, action: #selector(self.ArtIPChange(_:)), for: .editingChanged)
+        
+        AccountingjpTextField.addTarget(self, action: #selector(self.AccountingJPChange(_:)), for: .editingChanged)
+        AccountingipTextField.addTarget(self, action: #selector(self.AccountingIPChange(_:)), for: .editingChanged)
+        
+        ArcheologyjpTextField.addTarget(self, action: #selector(self.ArcheologyJPChange(_:)), for: .editingChanged)
+        ArcheologyipTextField.addTarget(self, action: #selector(self.ArcheologyIPChange(_:)), for: .editingChanged)
+        
+        ComputerjpTextField.addTarget(self, action: #selector(self.ComputerJPChange(_:)), for: .editingChanged)
+        ComputeripTextField.addTarget(self, action: #selector(self.ComputerIPChange(_:)), for: .editingChanged)
+        
+        PsychologyjpTextField.addTarget(self, action: #selector(self.PsychologyJPChange(_:)), for: .editingChanged)
+        PsychologyipTextField.addTarget(self, action: #selector(self.PsychologyIPChange(_:)), for: .editingChanged)
+        
+        AnthropologyjpTextField.addTarget(self, action: #selector(self.AnthropologyJPChange(_:)), for: .editingChanged)
+        AnthropologyipTextField.addTarget(self, action: #selector(self.AnthropologyIPChange(_:)), for: .editingChanged)
+        
+        BiologyjpTextField.addTarget(self, action: #selector(self.BiologyJPChange(_:)), for: .editingChanged)
+        BiologyipTextField.addTarget(self, action: #selector(self.BiologyIPChange(_:)), for: .editingChanged)
+        
+        GeologyjpTextField.addTarget(self, action: #selector(self.GeologyJPChange(_:)), for: .editingChanged)
+        GeologyipTextField.addTarget(self, action: #selector(self.GeologyIPChange(_:)), for: .editingChanged)
+        
+        EEjpTextField.addTarget(self, action: #selector(self.EEJPChange(_:)), for: .editingChanged)
+        EEipTextField.addTarget(self, action: #selector(self.EEIPChange(_:)), for: .editingChanged)
+        
+        AstronomyjpTextField.addTarget(self, action: #selector(self.AstronomyJPChange(_:)), for: .editingChanged)
+        AstronomyipTextField.addTarget(self, action: #selector(self.AstronomyIPChange(_:)), for: .editingChanged)
+        
+        NHistoryjpTextField.addTarget(self, action: #selector(self.NHistoryJPChange(_:)), for: .editingChanged)
+        NHistoryipTextField.addTarget(self, action: #selector(self.NHistoryIPChange(_:)), for: .editingChanged)
+        
+        PhysicsjpTextField.addTarget(self, action: #selector(self.PhysicsJPChange(_:)), for: .editingChanged)
+        PhysicsipTextField.addTarget(self, action: #selector(self.PhysicsIPChange(_:)), for: .editingChanged)
+        
+        LawjpTextField.addTarget(self, action: #selector(self.LawJPChange(_:)), for: .editingChanged)
+        LawipTextField.addTarget(self, action: #selector(self.LawIPChange(_:)), for: .editingChanged)
+        
+        PharmacyjpTextField.addTarget(self, action: #selector(self.PharmacyJPChange(_:)), for: .editingChanged)
+        PharmacyipTextField.addTarget(self, action: #selector(self.PharmacyIPChange(_:)), for: .editingChanged)
+        
+        HistoryjpTextField.addTarget(self, action: #selector(self.HistoryJPChange(_:)), for: .editingChanged)
+        HistoryipTextField.addTarget(self, action: #selector(self.HistoryIPChange(_:)), for: .editingChanged)
         
     }
 
@@ -517,21 +762,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    /*--------------TextFieldの処理--------------*/
+    //タップでキーボードを閉じる
+    @IBAction func tapGestureRecognizer(_ sender: Any) {
+        for tfjp in TextFieldjpArray {
+            tfjp.endEditing(true)
+        }
+        for tfip in TextFieldipArray {
+            tfip.endEditing(true)
+        }
+    }
+    
+    
+    //----戦闘技能----
+    //回避
     @objc func AvoidanceJPChange(_ sender: UITextField) {
         if sender.text?.isEmpty == true {
             sender.text = ""
             if AvoidanceipTextField.text?.isEmpty != true {
                 AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(AvoidanceipTextField.text!)!
                 AvoidancetLabel.text = String(AvoidanceTotal)
-                print("aaaaaaaa")
             } else if AvoidanceipTextField.text?.isEmpty == true {
                 AvoidancetLabel.text = AvoidancesLabel.text
-                print("bbbbbbb")
             }
         } else {
-            let total = Int(JobnLabel.text!)! - Int(sender.text!)!
-            JobnLabel.text = String(total)
-            
             if AvoidanceipTextField.text?.isEmpty == true {
                 AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)!
                 AvoidancetLabel.text = String(AvoidanceTotal)
@@ -539,6 +793,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)! + Int(AvoidanceipTextField.text!)!
                 AvoidancetLabel.text = String(AvoidanceTotal)
             }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
         }
     }
     
@@ -553,9 +823,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 AvoidancetLabel.text = AvoidancesLabel.text
             }
         } else {
-            let total = Int(JobnLabel.text!)! - Int(sender.text!)!
-            JobnLabel.text = String(total)
-            
             if AvoidancejpTextField.text?.isEmpty == true {
                 AvoidanceTotal = Int(AvoidancesLabel.text!)! + Int(sender.text!)!
                 AvoidancetLabel.text = String(AvoidanceTotal)
@@ -564,7 +831,4377 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 AvoidancetLabel.text = String(AvoidanceTotal)
             }
         }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
     }
+    
+    
+    //キック
+    @objc func KickJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if KickipTextField.text?.isEmpty != true {
+                KickTotal = Int(KicksLabel.text!)! + Int(KickipTextField.text!)!
+                KicktLabel.text = String(KickTotal)
+            } else if KickipTextField.text?.isEmpty == true {
+                KicktLabel.text = KicksLabel.text
+            }
+        } else {
+            if KickipTextField.text?.isEmpty == true {
+                KickTotal = Int(KicksLabel.text!)! + Int(sender.text!)!
+                KicktLabel.text = String(KickTotal)
+            } else {
+                KickTotal = Int(KicksLabel.text!)! + Int(sender.text!)! + Int(KickipTextField.text!)!
+                KicktLabel.text = String(KickTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func KickIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if KickjpTextField.text?.isEmpty != true {
+                KickTotal = Int(KicksLabel.text!)! + Int(KickjpTextField.text!)!
+                KicktLabel.text = String(KickTotal)
+            } else if KickipTextField.text?.isEmpty == true {
+                KicktLabel.text = KicksLabel.text
+            }
+        } else {
+            if KickjpTextField.text?.isEmpty == true {
+                KickTotal = Int(KicksLabel.text!)! + Int(sender.text!)!
+                KicktLabel.text = String(KickTotal)
+            } else {
+                KickTotal = Int(KicksLabel.text!)! + Int(KickjpTextField.text!)! + Int(sender.text!)!
+                KicktLabel.text = String(KickTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+        
+    }
+    
+    
+    //組み付き
+    @objc func WithJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if WithipTextField.text?.isEmpty != true {
+                WithTotal = Int(WithsLabel.text!)! + Int(WithipTextField.text!)!
+                WithtLabel.text = String(WithTotal)
+            } else if WithipTextField.text?.isEmpty == true {
+                WithtLabel.text = WithsLabel.text
+            }
+        } else {
+            if WithipTextField.text?.isEmpty == true {
+                WithTotal = Int(WithsLabel.text!)! + Int(sender.text!)!
+                WithtLabel.text = String(WithTotal)
+            } else {
+                WithTotal = Int(WithsLabel.text!)! + Int(sender.text!)! + Int(WithipTextField.text!)!
+                WithtLabel.text = String(WithTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func WithIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if WithjpTextField.text?.isEmpty != true {
+                WithTotal = Int(WithsLabel.text!)! + Int(WithjpTextField.text!)!
+                WithtLabel.text = String(WithTotal)
+            } else if WithipTextField.text?.isEmpty == true {
+                WithtLabel.text = WithsLabel.text
+            }
+        } else {
+            if WithjpTextField.text?.isEmpty == true {
+                WithTotal = Int(WithsLabel.text!)! + Int(sender.text!)!
+                WithtLabel.text = String(WithTotal)
+            } else {
+                WithTotal = Int(WithsLabel.text!)! + Int(WithjpTextField.text!)! + Int(sender.text!)!
+                WithtLabel.text = String(WithTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //パンチ
+    @objc func PunchJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PunchipTextField.text?.isEmpty != true {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(PunchipTextField.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            } else if PunchipTextField.text?.isEmpty == true {
+                PunchtLabel.text = PunchsLabel.text
+            }
+        } else {
+            if PunchipTextField.text?.isEmpty == true {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(sender.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            } else {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(sender.text!)! + Int(PunchipTextField.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PunchIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PunchjpTextField.text?.isEmpty != true {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(PunchjpTextField.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            } else if PunchipTextField.text?.isEmpty == true {
+                PunchtLabel.text = PunchsLabel.text
+            }
+        } else {
+            if PunchjpTextField.text?.isEmpty == true {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(sender.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            } else {
+                PunchTotal = Int(PunchsLabel.text!)! + Int(PunchjpTextField.text!)! + Int(sender.text!)!
+                PunchtLabel.text = String(PunchTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //頭突き
+    @objc func GlasgowJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if GlasgowipTextField.text?.isEmpty != true {
+                GlasgowTotal = Int(GlasgowsLabel.text!)! + Int(GlasgowipTextField.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            } else if GlasgowipTextField.text?.isEmpty == true {
+                GlasgowtLabel.text = GlasgowsLabel.text
+            }
+        } else {
+            if GlasgowipTextField.text?.isEmpty == true {
+                GlasgowTotal = Int(GlasgowsLabel.text!)! + Int(sender.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            } else {
+                GlasgowTotal = Int(GlasgowsLabel.text!)! + Int(sender.text!)! + Int(GlasgowipTextField.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func GlasgowIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if GlasgowjpTextField.text?.isEmpty != true {
+                GlasgowTotal = Int(PunchsLabel.text!)! + Int(GlasgowjpTextField.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            } else if GlasgowipTextField.text?.isEmpty == true {
+                GlasgowtLabel.text = GlasgowsLabel.text
+            }
+        } else {
+            if GlasgowjpTextField.text?.isEmpty == true {
+                GlasgowTotal = Int(GlasgowsLabel.text!)! + Int(sender.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            } else {
+                GlasgowTotal = Int(GlasgowsLabel.text!)! + Int(GlasgowjpTextField.text!)! + Int(sender.text!)!
+                GlasgowtLabel.text = String(GlasgowTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //投擲
+    @objc func ThrowingJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ThrowingipTextField.text?.isEmpty != true {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(ThrowingipTextField.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            } else if ThrowingipTextField.text?.isEmpty == true {
+                ThrowingtLabel.text = ThrowingsLabel.text
+            }
+        } else {
+            if ThrowingipTextField.text?.isEmpty == true {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(sender.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            } else {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(sender.text!)! + Int(ThrowingipTextField.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ThrowingIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ThrowingjpTextField.text?.isEmpty != true {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(ThrowingjpTextField.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            } else if ThrowingipTextField.text?.isEmpty == true {
+                ThrowingtLabel.text = ThrowingsLabel.text
+            }
+        } else {
+            if ThrowingjpTextField.text?.isEmpty == true {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(sender.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            } else {
+                ThrowingTotal = Int(ThrowingsLabel.text!)! + Int(ThrowingjpTextField.text!)! + Int(sender.text!)!
+                ThrowingtLabel.text = String(ThrowingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //ﾏｰｼｬﾙｱｰﾂ
+    @objc func MartialJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MartialipTextField.text?.isEmpty != true {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(MartialipTextField.text!)!
+                MartialtLabel.text = String(MartialTotal)
+            } else if MartialipTextField.text?.isEmpty == true {
+                MartialtLabel.text = MartialsLabel.text
+            }
+        } else {
+            if MartialipTextField.text?.isEmpty == true {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(sender.text!)!
+                MartialtLabel.text = String(MartialTotal)
+            } else {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(sender.text!)! + Int(MartialipTextField.text!)!
+                MartialtLabel.text = String(ThrowingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func MartialIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MartialjpTextField.text?.isEmpty != true {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(MartialjpTextField.text!)!
+                MartialtLabel.text = String(MartialTotal)
+            } else if MartialipTextField.text?.isEmpty == true {
+                MartialtLabel.text = MartialsLabel.text
+            }
+        } else {
+            if MartialjpTextField.text?.isEmpty == true {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(sender.text!)!
+                MartialtLabel.text = String(MartialTotal)
+            } else {
+                MartialTotal = Int(MartialsLabel.text!)! + Int(MartialjpTextField.text!)! + Int(sender.text!)!
+                MartialtLabel.text = String(MartialTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //拳銃
+    @objc func PistolJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PistolipTextField.text?.isEmpty != true {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(SubGunipTextField.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            } else if PistolipTextField.text?.isEmpty == true {
+                PistoltLabel.text = PistolsLabel.text
+            }
+        } else {
+            if PistolipTextField.text?.isEmpty == true {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(sender.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            } else {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(sender.text!)! + Int(PistolipTextField.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PistolIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PistoljpTextField.text?.isEmpty != true {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(SubGunjpTextField.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            } else if PistolipTextField.text?.isEmpty == true {
+                PistoltLabel.text = PistolsLabel.text
+            }
+        } else {
+            if PistoljpTextField.text?.isEmpty == true {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(sender.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            } else {
+                PistolTotal = Int(PistolsLabel.text!)! + Int(PistoljpTextField.text!)! + Int(sender.text!)!
+                PistoltLabel.text = String(PistolTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //ｻﾌﾞﾏｼﾝｶﾞﾝ
+    @objc func SubGunJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if SubGunipTextField.text?.isEmpty != true {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(SubGunipTextField.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            } else if SubGunipTextField.text?.isEmpty == true {
+                SubGuntLabel.text = SubGunsLabel.text
+            }
+        } else {
+            if SubGunipTextField.text?.isEmpty == true {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(sender.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            } else {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(sender.text!)! + Int(SubGunipTextField.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func SubGunIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if SubGunjpTextField.text?.isEmpty != true {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(SubGunjpTextField.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            } else if SubGunipTextField.text?.isEmpty == true {
+                SubGuntLabel.text = SubGunsLabel.text
+            }
+        } else {
+            if SubGunjpTextField.text?.isEmpty == true {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(sender.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            } else {
+                SubGunTotal = Int(SubGunsLabel.text!)! + Int(SubGunjpTextField.text!)! + Int(sender.text!)!
+                SubGuntLabel.text = String(SubGunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //ｼｮｯﾄｶﾞﾝ
+    @objc func ShotgunJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ShotgunipTextField.text?.isEmpty != true {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(ShotgunipTextField.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            } else if ShotgunipTextField.text?.isEmpty == true {
+                ShotguntLabel.text = ShotgunsLabel.text
+            }
+        } else {
+            if ShotgunipTextField.text?.isEmpty == true {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(sender.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            } else {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(sender.text!)! + Int(ShotgunipTextField.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ShotgunIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ShotgunjpTextField.text?.isEmpty != true {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(ShotgunjpTextField.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            } else if ShotgunipTextField.text?.isEmpty == true {
+                ShotguntLabel.text = ShotgunsLabel.text
+            }
+        } else {
+            if ShotgunjpTextField.text?.isEmpty == true {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(sender.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            } else {
+                ShotgunTotal = Int(ShotgunsLabel.text!)! + Int(ShotgunjpTextField.text!)! + Int(sender.text!)!
+                ShotguntLabel.text = String(ShotgunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //マシンガン
+    @objc func MachinegunJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MachinegunipTextField.text?.isEmpty != true {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(MachinegunipTextField.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            } else if MachinegunipTextField.text?.isEmpty == true {
+                MachineguntLabel.text = MachinegunsLabel.text
+            }
+        } else {
+            if MachinegunipTextField.text?.isEmpty == true {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(sender.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            } else {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(sender.text!)! + Int(MachinegunipTextField.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func MachinegunIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MachinegunjpTextField.text?.isEmpty != true {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(MachinegunjpTextField.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            } else if MachinegunipTextField.text?.isEmpty == true {
+                MachineguntLabel.text = MachinegunsLabel.text
+            }
+        } else {
+            if MachinegunjpTextField.text?.isEmpty == true {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(sender.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            } else {
+                MachinegunTotal = Int(MachinegunsLabel.text!)! + Int(MachinegunjpTextField.text!)! + Int(sender.text!)!
+                MachineguntLabel.text = String(MachinegunTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //ライフル
+    @objc func RifleJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if RifleipTextField.text?.isEmpty != true {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(RifleipTextField.text!)!
+                RifletLabel.text = String(RifleTotal)
+            } else if RifleipTextField.text?.isEmpty == true {
+                RifletLabel.text = RiflesLabel.text
+            }
+        } else {
+            if RifleipTextField.text?.isEmpty == true {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(sender.text!)!
+                RifletLabel.text = String(RifleTotal)
+            } else {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(sender.text!)! + Int(RifleipTextField.text!)!
+                RifletLabel.text = String(RifleTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func RifleIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if RiflejpTextField.text?.isEmpty != true {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(RiflejpTextField.text!)!
+                RifletLabel.text = String(RifleTotal)
+            } else if RifleipTextField.text?.isEmpty == true {
+                RifletLabel.text = RiflesLabel.text
+            }
+        } else {
+            if RiflejpTextField.text?.isEmpty == true {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(sender.text!)!
+                RifletLabel.text = String(RifleTotal)
+            } else {
+                RifleTotal = Int(RiflesLabel.text!)! + Int(RiflejpTextField.text!)! + Int(sender.text!)!
+                RifletLabel.text = String(RifleTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    //----探索技能----
+    //応急手当て
+    @objc func FirstaidJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if FirstaidipTextField.text?.isEmpty != true {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(FirstaidipTextField.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            } else if FirstaidipTextField.text?.isEmpty == true {
+                FirstaidtLabel.text = FirstaidsLabel.text
+            }
+        } else {
+            if FirstaidipTextField.text?.isEmpty == true {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(sender.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            } else {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(sender.text!)! + Int(FirstaidipTextField.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func FirstaidIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if FirstaidjpTextField.text?.isEmpty != true {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(FirstaidjpTextField.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            } else if FirstaidipTextField.text?.isEmpty == true {
+                FirstaidtLabel.text = FirstaidsLabel.text
+            }
+        } else {
+            if FirstaidjpTextField.text?.isEmpty == true {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(sender.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            } else {
+                FirstaidTotal = Int(FirstaidsLabel.text!)! + Int(FirstaidjpTextField.text!)! + Int(sender.text!)!
+                FirstaidtLabel.text = String(FirstaidTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //鍵開け
+    @objc func KeyopenJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if KeyopenipTextField.text?.isEmpty != true {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(KeyopenipTextField.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            } else if KeyopenipTextField.text?.isEmpty == true {
+                KeyopentLabel.text = KeyopensLabel.text
+            }
+        } else {
+            if KeyopenipTextField.text?.isEmpty == true {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(sender.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            } else {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(sender.text!)! + Int(KeyopenipTextField.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func KeyopenIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if KeyopenjpTextField.text?.isEmpty != true {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(KeyopenjpTextField.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            } else if KeyopenipTextField.text?.isEmpty == true {
+                KeyopentLabel.text = KeyopensLabel.text
+            }
+        } else {
+            if KeyopenjpTextField.text?.isEmpty == true {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(sender.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            } else {
+                KeyopenTotal = Int(KeyopensLabel.text!)! + Int(KeyopenjpTextField.text!)! + Int(sender.text!)!
+                KeyopentLabel.text = String(KeyopenTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //隠す
+    @objc func HideJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HideipTextField.text?.isEmpty != true {
+                HideTotal = Int(HidesLabel.text!)! + Int(KeyopenipTextField.text!)!
+                HidetLabel.text = String(HideTotal)
+            } else if HideipTextField.text?.isEmpty == true {
+                HidetLabel.text = HidesLabel.text
+            }
+        } else {
+            if HideipTextField.text?.isEmpty == true {
+                HideTotal = Int(HidesLabel.text!)! + Int(sender.text!)!
+                HidetLabel.text = String(HideTotal)
+            } else {
+                HideTotal = Int(HidesLabel.text!)! + Int(sender.text!)! + Int(HideipTextField.text!)!
+                HidetLabel.text = String(HideTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func HideIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HidejpTextField.text?.isEmpty != true {
+                HideTotal = Int(HidesLabel.text!)! + Int(HidejpTextField.text!)!
+                HidetLabel.text = String(HideTotal)
+            } else if HideipTextField.text?.isEmpty == true {
+                HidetLabel.text = HidesLabel.text
+            }
+        } else {
+            if HidejpTextField.text?.isEmpty == true {
+                HideTotal = Int(HidesLabel.text!)! + Int(sender.text!)!
+                HidetLabel.text = String(HideTotal)
+            } else {
+                HideTotal = Int(HidesLabel.text!)! + Int(HidejpTextField.text!)! + Int(sender.text!)!
+                HidetLabel.text = String(HideTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //隠れる
+    @objc func HideoutJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HideoutipTextField.text?.isEmpty != true {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(HideoutipTextField.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            } else if HideoutipTextField.text?.isEmpty == true {
+                HideouttLabel.text = HideoutsLabel.text
+            }
+        } else {
+            if HideoutipTextField.text?.isEmpty == true {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(sender.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            } else {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(sender.text!)! + Int(HideoutipTextField.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func HideoutIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HideoutjpTextField.text?.isEmpty != true {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(HideoutjpTextField.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            } else if HideoutipTextField.text?.isEmpty == true {
+                HideouttLabel.text = HideoutsLabel.text
+            }
+        } else {
+            if HideoutjpTextField.text?.isEmpty == true {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(sender.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            } else {
+                HideoutTotal = Int(HideoutsLabel.text!)! + Int(HideoutjpTextField.text!)! + Int(sender.text!)!
+                HideouttLabel.text = String(HideoutTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //聞き耳
+    @objc func ListenJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ListenipTextField.text?.isEmpty != true {
+                ListenTotal = Int(ListensLabel.text!)! + Int(ListenipTextField.text!)!
+                ListentLabel.text = String(ListenTotal)
+            } else if ListenipTextField.text?.isEmpty == true {
+                ListentLabel.text = ListensLabel.text
+            }
+        } else {
+            if ListenipTextField.text?.isEmpty == true {
+                ListenTotal = Int(ListensLabel.text!)! + Int(sender.text!)!
+                ListentLabel.text = String(ListenTotal)
+            } else {
+                ListenTotal = Int(ListensLabel.text!)! + Int(sender.text!)! + Int(ListenipTextField.text!)!
+                ListentLabel.text = String(ListenTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ListenIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ListenjpTextField.text?.isEmpty != true {
+                ListenTotal = Int(ListensLabel.text!)! + Int(ListenjpTextField.text!)!
+                ListentLabel.text = String(ListenTotal)
+            } else if ListenipTextField.text?.isEmpty == true {
+                ListentLabel.text = ListensLabel.text
+            }
+        } else {
+            if ListenjpTextField.text?.isEmpty == true {
+                ListenTotal = Int(ListensLabel.text!)! + Int(sender.text!)!
+                ListentLabel.text = String(ListenTotal)
+            } else {
+                ListenTotal = Int(ListensLabel.text!)! + Int(ListenjpTextField.text!)! + Int(sender.text!)!
+                ListentLabel.text = String(ListenTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //忍び歩き
+    @objc func WalkJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if WalkipTextField.text?.isEmpty != true {
+                WalkTotal = Int(WalksLabel.text!)! + Int(WalkipTextField.text!)!
+                WalktLabel.text = String(WalkTotal)
+            } else if WalkipTextField.text?.isEmpty == true {
+                WalktLabel.text = WalksLabel.text
+            }
+        } else {
+            if WalkipTextField.text?.isEmpty == true {
+                WalkTotal = Int(WalksLabel.text!)! + Int(sender.text!)!
+                WalktLabel.text = String(WalkTotal)
+            } else {
+                WalkTotal = Int(WalksLabel.text!)! + Int(sender.text!)! + Int(WalkipTextField.text!)!
+                WalktLabel.text = String(WalkTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func WalkIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if WalkjpTextField.text?.isEmpty != true {
+                WalkTotal = Int(WalksLabel.text!)! + Int(WalkjpTextField.text!)!
+                WalktLabel.text = String(WalkTotal)
+            } else if WalkipTextField.text?.isEmpty == true {
+                WalktLabel.text = WalksLabel.text
+            }
+        } else {
+            if WalkjpTextField.text?.isEmpty == true {
+                WalkTotal = Int(WalksLabel.text!)! + Int(sender.text!)!
+                WalktLabel.text = String(WalkTotal)
+            } else {
+                WalkTotal = Int(WalksLabel.text!)! + Int(WalkjpTextField.text!)! + Int(sender.text!)!
+                WalktLabel.text = String(WalkTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //写真術
+    @objc func PhotographyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PhotographyipTextField.text?.isEmpty != true {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(PhotographyipTextField.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            } else if PhotographyipTextField.text?.isEmpty == true {
+                PhotographytLabel.text = PhotographysLabel.text
+            }
+        } else {
+            if PhotographyipTextField.text?.isEmpty == true {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(sender.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            } else {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(sender.text!)! + Int(PhotographyipTextField.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PhotographyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PhotographyjpTextField.text?.isEmpty != true {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(PhotographyjpTextField.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            } else if PhotographyipTextField.text?.isEmpty == true {
+                PhotographytLabel.text = PhotographysLabel.text
+            }
+        } else {
+            if PhotographyjpTextField.text?.isEmpty == true {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(sender.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            } else {
+                PhotographyTotal = Int(PhotographysLabel.text!)! + Int(PhotographyjpTextField.text!)! + Int(sender.text!)!
+                PhotographytLabel.text = String(PhotographyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //精神分析
+    @objc func PsychoanalysisJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PsychoanalysisipTextField.text?.isEmpty != true {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(PsychoanalysisipTextField.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            } else if PsychoanalysisipTextField.text?.isEmpty == true {
+                PsychoanalysistLabel.text = PsychoanalysissLabel.text
+            }
+        } else {
+            if PsychoanalysisipTextField.text?.isEmpty == true {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(sender.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            } else {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(sender.text!)! + Int(PsychoanalysisipTextField.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PsychoanalysisIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PsychoanalysisjpTextField.text?.isEmpty != true {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(PsychoanalysisjpTextField.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            } else if PsychoanalysisipTextField.text?.isEmpty == true {
+                PsychoanalysistLabel.text = PsychoanalysissLabel.text
+            }
+        } else {
+            if PsychoanalysisjpTextField.text?.isEmpty == true {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(sender.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            } else {
+                PsychoanalysisTotal = Int(PsychoanalysissLabel.text!)! + Int(PsychoanalysisjpTextField.text!)! + Int(sender.text!)!
+                PsychoanalysistLabel.text = String(PsychoanalysisTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //追跡
+    @objc func ChaseJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ChaseipTextField.text?.isEmpty != true {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(ChaseipTextField.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            } else if ChaseipTextField.text?.isEmpty == true {
+                ChasetLabel.text = ChasesLabel.text
+            }
+        } else {
+            if ChaseipTextField.text?.isEmpty == true {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(sender.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            } else {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(sender.text!)! + Int(ChaseipTextField.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ChaseIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ChasejpTextField.text?.isEmpty != true {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(ChasejpTextField.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            } else if ChaseipTextField.text?.isEmpty == true {
+                ChasetLabel.text = ChasesLabel.text
+            }
+        } else {
+            if ChasejpTextField.text?.isEmpty == true {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(sender.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            } else {
+                ChaseTotal = Int(ChasesLabel.text!)! + Int(ChasejpTextField.text!)! + Int(sender.text!)!
+                ChasetLabel.text = String(ChaseTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //登攀
+    @objc func ClimbingJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ClimbingipTextField.text?.isEmpty != true {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(ClimbingipTextField.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            } else if ClimbingipTextField.text?.isEmpty == true {
+                ClimbingtLabel.text = ClimbingsLabel.text
+            }
+        } else {
+            if ClimbingipTextField.text?.isEmpty == true {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(sender.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            } else {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(sender.text!)! + Int(ClimbingipTextField.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ClimbingIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ClimbingjpTextField.text?.isEmpty != true {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(ClimbingjpTextField.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            } else if ClimbingipTextField.text?.isEmpty == true {
+                ClimbingtLabel.text = ClimbingsLabel.text
+            }
+        } else {
+            if ClimbingjpTextField.text?.isEmpty == true {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(sender.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            } else {
+                ClimbingTotal = Int(ClimbingsLabel.text!)! + Int(ClimbingjpTextField.text!)! + Int(sender.text!)!
+                ClimbingtLabel.text = String(ClimbingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //図書館
+    @objc func LibraryJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LibraryipTextField.text?.isEmpty != true {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(LibraryipTextField.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            } else if LibraryipTextField.text?.isEmpty == true {
+                LibrarytLabel.text = LibrarysLabel.text
+            }
+        } else {
+            if LibraryipTextField.text?.isEmpty == true {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(sender.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            } else {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(sender.text!)! + Int(LibraryipTextField.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func LibraryIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LibraryjpTextField.text?.isEmpty != true {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(LibraryjpTextField.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            } else if LibraryipTextField.text?.isEmpty == true {
+                LibrarytLabel.text = LibrarysLabel.text
+            }
+        } else {
+            if LibraryjpTextField.text?.isEmpty == true {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(sender.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            } else {
+                LibraryTotal = Int(LibrarysLabel.text!)! + Int(LibraryjpTextField.text!)! + Int(sender.text!)!
+                LibrarytLabel.text = String(LibraryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //目星
+    @objc func EducatedguessJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if EducatedguessipTextField.text?.isEmpty != true {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(EducatedguessipTextField.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            } else if EducatedguessipTextField.text?.isEmpty == true {
+                EducatedguesstLabel.text = EducatedguesssLabel.text
+            }
+        } else {
+            if EducatedguessipTextField.text?.isEmpty == true {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(sender.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            } else {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(sender.text!)! + Int(EducatedguessipTextField.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func EducatedguessIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if EducatedguessjpTextField.text?.isEmpty != true {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(EducatedguessjpTextField.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            } else if EducatedguessipTextField.text?.isEmpty == true {
+                EducatedguesstLabel.text = EducatedguesssLabel.text
+            }
+        } else {
+            if EducatedguessjpTextField.text?.isEmpty == true {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(sender.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            } else {
+                EducatedguessTotal = Int(EducatedguesssLabel.text!)! + Int(EducatedguessjpTextField.text!)! + Int(sender.text!)!
+                EducatedguesstLabel.text = String(EducatedguessTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //----行動技能----
+    //運転
+    @objc func DriveJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if DriveipTextField.text?.isEmpty != true {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(DriveipTextField.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            } else if DriveipTextField.text?.isEmpty == true {
+                DrivetLabel.text = DrivesLabel.text
+            }
+        } else {
+            if DriveipTextField.text?.isEmpty == true {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(sender.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            } else {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(sender.text!)! + Int(DriveipTextField.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func DriveIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if DrivejpTextField.text?.isEmpty != true {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(DrivejpTextField.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            } else if DriveipTextField.text?.isEmpty == true {
+                DrivetLabel.text = DrivesLabel.text
+            }
+        } else {
+            if DrivejpTextField.text?.isEmpty == true {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(sender.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            } else {
+                DriveTotal = Int(DrivesLabel.text!)! + Int(DrivejpTextField.text!)! + Int(sender.text!)!
+                DrivetLabel.text = String(DriveTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //機械修理
+    @objc func MRepairJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MRepairipTextField.text?.isEmpty != true {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(MRepairipTextField.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            } else if MRepairipTextField.text?.isEmpty == true {
+                MRepairtLabel.text = MRepairsLabel.text
+            }
+        } else {
+            if MRepairipTextField.text?.isEmpty == true {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(sender.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            } else {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(sender.text!)! + Int(MRepairipTextField.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func MRepairIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MRepairjpTextField.text?.isEmpty != true {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(MRepairjpTextField.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            } else if MRepairipTextField.text?.isEmpty == true {
+                MRepairtLabel.text = MRepairsLabel.text
+            }
+        } else {
+            if MRepairjpTextField.text?.isEmpty == true {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(sender.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            } else {
+                MRepairTotal = Int(MRepairsLabel.text!)! + Int(MRepairjpTextField.text!)! + Int(sender.text!)!
+                MRepairtLabel.text = String(MRepairTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //重機械操作
+    @objc func OperationJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if OperationipTextField.text?.isEmpty != true {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(OperationipTextField.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            } else if OperationipTextField.text?.isEmpty == true {
+                OperationtLabel.text = OperationsLabel.text
+            }
+        } else {
+            if OperationipTextField.text?.isEmpty == true {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(sender.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            } else {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(sender.text!)! + Int(OperationipTextField.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func OperationIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if OperationjpTextField.text?.isEmpty != true {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(OperationjpTextField.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            } else if OperationipTextField.text?.isEmpty == true {
+                OperationtLabel.text = OperationsLabel.text
+            }
+        } else {
+            if OperationjpTextField.text?.isEmpty == true {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(sender.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            } else {
+                OperationTotal = Int(OperationsLabel.text!)! + Int(OperationjpTextField.text!)! + Int(sender.text!)!
+                OperationtLabel.text = String(OperationTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //乗馬
+    @objc func RidingJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if RidingipTextField.text?.isEmpty != true {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(RidingipTextField.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            } else if RidingipTextField.text?.isEmpty == true {
+                RidingtLabel.text = RidingsLabel.text
+            }
+        } else {
+            if RidingipTextField.text?.isEmpty == true {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(sender.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            } else {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(sender.text!)! + Int(RidingipTextField.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func RidingIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if RidingjpTextField.text?.isEmpty != true {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(RidingjpTextField.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            } else if RidingipTextField.text?.isEmpty == true {
+                RidingtLabel.text = RidingsLabel.text
+            }
+        } else {
+            if RidingjpTextField.text?.isEmpty == true {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(sender.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            } else {
+                RidingTotal = Int(RidingsLabel.text!)! + Int(RidingjpTextField.text!)! + Int(sender.text!)!
+                RidingtLabel.text = String(RidingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //水泳
+    @objc func SwimJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if SwimipTextField.text?.isEmpty != true {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(SwimipTextField.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            } else if SwimipTextField.text?.isEmpty == true {
+                SwimtLabel.text = SwimsLabel.text
+            }
+        } else {
+            if SwimipTextField.text?.isEmpty == true {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(sender.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            } else {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(sender.text!)! + Int(SwimipTextField.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func SwimIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if SwimjpTextField.text?.isEmpty != true {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(SwimjpTextField.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            } else if SwimipTextField.text?.isEmpty == true {
+                SwimtLabel.text = SwimsLabel.text
+            }
+        } else {
+            if SwimjpTextField.text?.isEmpty == true {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(sender.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            } else {
+                SwimTotal = Int(SwimsLabel.text!)! + Int(SwimjpTextField.text!)! + Int(sender.text!)!
+                SwimtLabel.text = String(SwimTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //製作
+    @objc func ProductionJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ProductionipTextField.text?.isEmpty != true {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(ProductionipTextField.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            } else if ProductionipTextField.text?.isEmpty == true {
+                ProductiontLabel.text = ProductionsLabel.text
+            }
+        } else {
+            if ProductionipTextField.text?.isEmpty == true {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(sender.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            } else {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(sender.text!)! + Int(ProductionipTextField.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ProductionIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ProductionjpTextField.text?.isEmpty != true {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(ProductionjpTextField.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            } else if ProductionipTextField.text?.isEmpty == true {
+                ProductiontLabel.text = ProductionsLabel.text
+            }
+        } else {
+            if ProductionjpTextField.text?.isEmpty == true {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(sender.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            } else {
+                ProductionTotal = Int(ProductionsLabel.text!)! + Int(ProductionjpTextField.text!)! + Int(sender.text!)!
+                ProductiontLabel.text = String(ProductionTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //操縦
+    @objc func ControlJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ControlipTextField.text?.isEmpty != true {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(ControlipTextField.text!)!
+                ControltLabel.text = String(ControlTotal)
+            } else if ControlipTextField.text?.isEmpty == true {
+                ControltLabel.text = ControlsLabel.text
+            }
+        } else {
+            if ControlipTextField.text?.isEmpty == true {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(sender.text!)!
+                ControltLabel.text = String(ControlTotal)
+            } else {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(sender.text!)! + Int(ControlipTextField.text!)!
+                ControltLabel.text = String(ControlTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ControlIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ControljpTextField.text?.isEmpty != true {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(ControljpTextField.text!)!
+                ControltLabel.text = String(ControlTotal)
+            } else if ControlipTextField.text?.isEmpty == true {
+                ControltLabel.text = ControlsLabel.text
+            }
+        } else {
+            if ControljpTextField.text?.isEmpty == true {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(sender.text!)!
+                ControltLabel.text = String(ControlTotal)
+            } else {
+                ControlTotal = Int(ControlsLabel.text!)! + Int(ControljpTextField.text!)! + Int(sender.text!)!
+                ControltLabel.text = String(ControlTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //跳躍
+    @objc func LeapJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LeapipTextField.text?.isEmpty != true {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(LeapipTextField.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            } else if LeapipTextField.text?.isEmpty == true {
+                LeaptLabel.text = LeapsLabel.text
+            }
+        } else {
+            if LeapipTextField.text?.isEmpty == true {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(sender.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            } else {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(sender.text!)! + Int(LeapipTextField.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func LeapIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LeapjpTextField.text?.isEmpty != true {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(LeapjpTextField.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            } else if LeapipTextField.text?.isEmpty == true {
+                LeaptLabel.text = LeapsLabel.text
+            }
+        } else {
+            if LeapjpTextField.text?.isEmpty == true {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(sender.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            } else {
+                LeapTotal = Int(LeapsLabel.text!)! + Int(LeapjpTextField.text!)! + Int(sender.text!)!
+                LeaptLabel.text = String(LeapTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //電気修理
+    @objc func ERepairJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ERepairipTextField.text?.isEmpty != true {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(ERepairipTextField.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            } else if ERepairipTextField.text?.isEmpty == true {
+                ERepairtLabel.text = ERepairsLabel.text
+            }
+        } else {
+            if ERepairipTextField.text?.isEmpty == true {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(sender.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            } else {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(sender.text!)! + Int(ERepairipTextField.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ERepairIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ERepairjpTextField.text?.isEmpty != true {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(ERepairjpTextField.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            } else if ERepairipTextField.text?.isEmpty == true {
+                ERepairtLabel.text = ERepairsLabel.text
+            }
+        } else {
+            if ERepairjpTextField.text?.isEmpty == true {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(sender.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            } else {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(ERepairjpTextField.text!)! + Int(sender.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //ナビゲート
+    @objc func NaviJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if NaviipTextField.text?.isEmpty != true {
+                NaviTotal = Int(NavisLabel.text!)! + Int(NaviipTextField.text!)!
+                NavitLabel.text = String(NaviTotal)
+            } else if NaviipTextField.text?.isEmpty == true {
+                NavitLabel.text = NavisLabel.text
+            }
+        } else {
+            if ERepairipTextField.text?.isEmpty == true {
+                NaviTotal = Int(NavisLabel.text!)! + Int(sender.text!)!
+                NavitLabel.text = String(NaviTotal)
+            } else {
+                ERepairTotal = Int(ERepairsLabel.text!)! + Int(sender.text!)! + Int(ERepairipTextField.text!)!
+                ERepairtLabel.text = String(ERepairTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func NaviIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if NavijpTextField.text?.isEmpty != true {
+                NaviTotal = Int(NavisLabel.text!)! + Int(NavijpTextField.text!)!
+                NavitLabel.text = String(NaviTotal)
+            } else if NaviipTextField.text?.isEmpty == true {
+                NavitLabel.text = NavisLabel.text
+            }
+        } else {
+            if NavijpTextField.text?.isEmpty == true {
+                NaviTotal = Int(NavisLabel.text!)! + Int(sender.text!)!
+                NavitLabel.text = String(NaviTotal)
+            } else {
+                NaviTotal = Int(NavisLabel.text!)! + Int(NavijpTextField.text!)! + Int(sender.text!)!
+                NavitLabel.text = String(NaviTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //変装
+    @objc func DisguiseJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if DisguiseipTextField.text?.isEmpty != true {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(DisguiseipTextField.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            } else if DisguiseipTextField.text?.isEmpty == true {
+                DisguisetLabel.text = DisguisesLabel.text
+            }
+        } else {
+            if DisguiseipTextField.text?.isEmpty == true {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(sender.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            } else {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(sender.text!)! + Int(DisguiseipTextField.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func DisguiseIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if DisguisejpTextField.text?.isEmpty != true {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(DisguisejpTextField.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            } else if DisguiseipTextField.text?.isEmpty == true {
+                DisguisetLabel.text = DisguisesLabel.text
+            }
+        } else {
+            if DisguisejpTextField.text?.isEmpty == true {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(sender.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            } else {
+                DisguiseTotal = Int(DisguisesLabel.text!)! + Int(DisguisejpTextField.text!)! + Int(sender.text!)!
+                DisguisetLabel.text = String(DisguiseTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //----交渉技能----
+    //言いくるめ
+    @objc func TalkintoJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if TalkintoipTextField.text?.isEmpty != true {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(TalkintoipTextField.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            } else if TalkintoipTextField.text?.isEmpty == true {
+                TalkintotLabel.text = TalkintosLabel.text
+            }
+        } else {
+            if TalkintoipTextField.text?.isEmpty == true {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(sender.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            } else {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(sender.text!)! + Int(TalkintoipTextField.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func TalkintoIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if TalkintojpTextField.text?.isEmpty != true {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(TalkintojpTextField.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            } else if TalkintoipTextField.text?.isEmpty == true {
+                TalkintotLabel.text = TalkintosLabel.text
+            }
+        } else {
+            if TalkintojpTextField.text?.isEmpty == true {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(sender.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            } else {
+                TalkintoTotal = Int(TalkintosLabel.text!)! + Int(TalkintojpTextField.text!)! + Int(sender.text!)!
+                TalkintotLabel.text = String(TalkintoTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //信用
+    @objc func TrustJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if TrustipTextField.text?.isEmpty != true {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(TrustipTextField.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            } else if TrustipTextField.text?.isEmpty == true {
+                TrusttLabel.text = TrustsLabel.text
+            }
+        } else {
+            if TrustipTextField.text?.isEmpty == true {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(sender.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            } else {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(sender.text!)! + Int(TrustipTextField.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func TrustIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if TrustjpTextField.text?.isEmpty != true {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(TrustjpTextField.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            } else if TrustipTextField.text?.isEmpty == true {
+                TrusttLabel.text = TrustsLabel.text
+            }
+        } else {
+            if TrustjpTextField.text?.isEmpty == true {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(sender.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            } else {
+                TrustTotal = Int(TrustsLabel.text!)! + Int(TrustjpTextField.text!)! + Int(sender.text!)!
+                TrusttLabel.text = String(TrustTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //説得
+    @objc func PersuasionJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PersuasionipTextField.text?.isEmpty != true {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(PersuasionipTextField.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            } else if PersuasionipTextField.text?.isEmpty == true {
+                PersuasiontLabel.text = PersuasionsLabel.text
+            }
+        } else {
+            if PersuasionipTextField.text?.isEmpty == true {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(sender.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            } else {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(sender.text!)! + Int(PersuasionipTextField.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PersuasionIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PersuasionjpTextField.text?.isEmpty != true {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(PersuasionjpTextField.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            } else if PersuasionipTextField.text?.isEmpty == true {
+                PersuasiontLabel.text = PersuasionsLabel.text
+            }
+        } else {
+            if PersuasionjpTextField.text?.isEmpty == true {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(sender.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            } else {
+                PersuasionTotal = Int(PersuasionsLabel.text!)! + Int(PersuasionjpTextField.text!)! + Int(sender.text!)!
+                PersuasiontLabel.text = String(PersuasionTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //値切り
+    @objc func BargainJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if BargainipTextField.text?.isEmpty != true {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(BargainipTextField.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            } else if BargainipTextField.text?.isEmpty == true {
+                BargaintLabel.text = BargainsLabel.text
+            }
+        } else {
+            if BargainipTextField.text?.isEmpty == true {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(sender.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            } else {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(sender.text!)! + Int(BargainipTextField.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func BargainIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if BargainjpTextField.text?.isEmpty != true {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(BargainjpTextField.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            } else if BargainipTextField.text?.isEmpty == true {
+                BargaintLabel.text = BargainsLabel.text
+            }
+        } else {
+            if BargainjpTextField.text?.isEmpty == true {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(sender.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            } else {
+                BargainTotal = Int(BargainsLabel.text!)! + Int(BargainjpTextField.text!)! + Int(sender.text!)!
+                BargaintLabel.text = String(BargainTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //母国語
+    @objc func MTongueJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MTongueipTextField.text?.isEmpty != true {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(MTongueipTextField.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            } else if MTongueipTextField.text?.isEmpty == true {
+                MTonguetLabel.text = MTonguesLabel.text
+            }
+        } else {
+            if MTongueipTextField.text?.isEmpty == true {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(sender.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            } else {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(sender.text!)! + Int(MTongueipTextField.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func MTongueIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MTonguejpTextField.text?.isEmpty != true {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(MTonguejpTextField.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            } else if MTongueipTextField.text?.isEmpty == true {
+                MTonguetLabel.text = MTonguesLabel.text
+            }
+        } else {
+            if MTonguejpTextField.text?.isEmpty == true {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(sender.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            } else {
+                MTongueTotal = Int(MTonguesLabel.text!)! + Int(MTonguejpTextField.text!)! + Int(sender.text!)!
+                MTonguetLabel.text = String(MTongueTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //----知識技能----
+    //医学
+    @objc func MedicineJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MedicineipTextField.text?.isEmpty != true {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(MedicineipTextField.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            } else if MedicineipTextField.text?.isEmpty == true {
+                MedicinetLabel.text = MedicinesLabel.text
+            }
+        } else {
+            if MedicineipTextField.text?.isEmpty == true {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(sender.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            } else {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(sender.text!)! + Int(MedicineipTextField.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func MedicineIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if MedicinejpTextField.text?.isEmpty != true {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(MedicinejpTextField.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            } else if MedicineipTextField.text?.isEmpty == true {
+                MedicinetLabel.text = MedicinesLabel.text
+            }
+        } else {
+            if MedicinejpTextField.text?.isEmpty == true {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(sender.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            } else {
+                MedicineTotal = Int(MedicinesLabel.text!)! + Int(MedicinejpTextField.text!)! + Int(sender.text!)!
+                MedicinetLabel.text = String(MedicineTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //オカルト
+    @objc func OccultJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if OccultipTextField.text?.isEmpty != true {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(OccultipTextField.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            } else if OccultipTextField.text?.isEmpty == true {
+                OcculttLabel.text = OccultsLabel.text
+            }
+        } else {
+            if OccultipTextField.text?.isEmpty == true {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(sender.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            } else {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(sender.text!)! + Int(OccultipTextField.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func OccultIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if OccultjpTextField.text?.isEmpty != true {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(MedicinejpTextField.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            } else if OccultipTextField.text?.isEmpty == true {
+                OcculttLabel.text = OccultsLabel.text
+            }
+        } else {
+            if OccultjpTextField.text?.isEmpty == true {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(sender.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            } else {
+                OccultTotal = Int(OccultsLabel.text!)! + Int(OccultjpTextField.text!)! + Int(sender.text!)!
+                OcculttLabel.text = String(OccultTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //化学
+    @objc func ChemistryJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ChemistryipTextField.text?.isEmpty != true {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(ChemistryipTextField.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            } else if ChemistryipTextField.text?.isEmpty == true {
+                ChemistrytLabel.text = ChemistrysLabel.text
+            }
+        } else {
+            if ChemistryipTextField.text?.isEmpty == true {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(sender.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            } else {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(sender.text!)! + Int(ChemistryipTextField.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ChemistryIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ChemistryjpTextField.text?.isEmpty != true {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(ChemistryjpTextField.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            } else if ChemistryipTextField.text?.isEmpty == true {
+                ChemistrytLabel.text = ChemistrysLabel.text
+            }
+        } else {
+            if ChemistryjpTextField.text?.isEmpty == true {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(sender.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            } else {
+                ChemistryTotal = Int(ChemistrysLabel.text!)! + Int(ChemistryjpTextField.text!)! + Int(sender.text!)!
+                ChemistrytLabel.text = String(ChemistryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //ｸﾄｩﾙﾌ神話
+    @objc func CthulhuJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if CthulhuipTextField.text?.isEmpty != true {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(CthulhuipTextField.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            } else if CthulhuipTextField.text?.isEmpty == true {
+                CthulhutLabel.text = CthulhusLabel.text
+            }
+        } else {
+            if CthulhuipTextField.text?.isEmpty == true {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(sender.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            } else {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(sender.text!)! + Int(CthulhuipTextField.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func CthulhuIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if CthulhujpTextField.text?.isEmpty != true {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(CthulhujpTextField.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            } else if CthulhuipTextField.text?.isEmpty == true {
+                CthulhutLabel.text = CthulhusLabel.text
+            }
+        } else {
+            if CthulhujpTextField.text?.isEmpty == true {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(sender.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            } else {
+                CthulhuTotal = Int(CthulhusLabel.text!)! + Int(CthulhujpTextField.text!)! + Int(sender.text!)!
+                CthulhutLabel.text = String(CthulhuTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //芸術
+    @objc func ArtJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ArtipTextField.text?.isEmpty != true {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(ArtipTextField.text!)!
+                ArttLabel.text = String(ArtTotal)
+            } else if ArtipTextField.text?.isEmpty == true {
+                ArttLabel.text = ArtsLabel.text
+            }
+        } else {
+            if ArtipTextField.text?.isEmpty == true {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(sender.text!)!
+                ArttLabel.text = String(ArtTotal)
+            } else {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(sender.text!)! + Int(ArtipTextField.text!)!
+                ArttLabel.text = String(ArtTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ArtIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ArtjpTextField.text?.isEmpty != true {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(ArtjpTextField.text!)!
+                ArttLabel.text = String(ArtTotal)
+            } else if ArtipTextField.text?.isEmpty == true {
+                ArttLabel.text = ArtsLabel.text
+            }
+        } else {
+            if ArtjpTextField.text?.isEmpty == true {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(sender.text!)!
+                ArttLabel.text = String(ArtTotal)
+            } else {
+                ArtTotal = Int(ArtsLabel.text!)! + Int(ArtjpTextField.text!)! + Int(sender.text!)!
+                ArttLabel.text = String(ArtTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //経理
+    @objc func AccountingJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AccountingipTextField.text?.isEmpty != true {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(AccountingipTextField.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            } else if AccountingipTextField.text?.isEmpty == true {
+                AccountingtLabel.text = AccountingsLabel.text
+            }
+        } else {
+            if AccountingipTextField.text?.isEmpty == true {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(sender.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            } else {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(sender.text!)! + Int(AccountingipTextField.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func AccountingIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AccountingjpTextField.text?.isEmpty != true {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(AccountingjpTextField.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            } else if AccountingipTextField.text?.isEmpty == true {
+                AccountingtLabel.text = AccountingsLabel.text
+            }
+        } else {
+            if AccountingjpTextField.text?.isEmpty == true {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(sender.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            } else {
+                AccountingTotal = Int(AccountingsLabel.text!)! + Int(AccountingjpTextField.text!)! + Int(sender.text!)!
+                AccountingtLabel.text = String(AccountingTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //考古学
+    @objc func ArcheologyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ArcheologyipTextField.text?.isEmpty != true {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(ArcheologyipTextField.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            } else if ArcheologyipTextField.text?.isEmpty == true {
+                ArcheologytLabel.text = ArcheologysLabel.text
+            }
+        } else {
+            if ArcheologyipTextField.text?.isEmpty == true {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(sender.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            } else {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(sender.text!)! + Int(ArcheologyipTextField.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ArcheologyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ArcheologyjpTextField.text?.isEmpty != true {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(ArcheologyjpTextField.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            } else if ArcheologyipTextField.text?.isEmpty == true {
+                ArcheologytLabel.text = ArcheologysLabel.text
+            }
+        } else {
+            if ArcheologyjpTextField.text?.isEmpty == true {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(sender.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            } else {
+                ArcheologyTotal = Int(ArcheologysLabel.text!)! + Int(ArcheologyjpTextField.text!)! + Int(sender.text!)!
+                ArcheologytLabel.text = String(ArcheologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //ｺﾝﾋﾟｭｰﾀｰ
+    @objc func ComputerJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ComputeripTextField.text?.isEmpty != true {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(ComputeripTextField.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            } else if ComputeripTextField.text?.isEmpty == true {
+                ComputertLabel.text = ComputersLabel.text
+            }
+        } else {
+            if ComputeripTextField.text?.isEmpty == true {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(sender.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            } else {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(sender.text!)! + Int(ComputeripTextField.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func ComputerIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if ComputerjpTextField.text?.isEmpty != true {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(ComputerjpTextField.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            } else if ComputeripTextField.text?.isEmpty == true {
+                ComputertLabel.text = ComputersLabel.text
+            }
+        } else {
+            if ComputerjpTextField.text?.isEmpty == true {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(sender.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            } else {
+                ComputerTotal = Int(ComputersLabel.text!)! + Int(ComputerjpTextField.text!)! + Int(sender.text!)!
+                ComputertLabel.text = String(ComputerTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //心理学
+    @objc func PsychologyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PsychologyipTextField.text?.isEmpty != true {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(PsychologyipTextField.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            } else if PsychologyipTextField.text?.isEmpty == true {
+                PsychologytLabel.text = PsychologysLabel.text
+            }
+        } else {
+            if PsychologyipTextField.text?.isEmpty == true {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(sender.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            } else {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(sender.text!)! + Int(PsychologyipTextField.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PsychologyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PsychologyjpTextField.text?.isEmpty != true {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(PsychologyjpTextField.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            } else if PsychologyipTextField.text?.isEmpty == true {
+                PsychologytLabel.text = PsychologysLabel.text
+            }
+        } else {
+            if PsychologyjpTextField.text?.isEmpty == true {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(sender.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            } else {
+                PsychologyTotal = Int(PsychologysLabel.text!)! + Int(PsychologyjpTextField.text!)! + Int(sender.text!)!
+                PsychologytLabel.text = String(PsychologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //人類学
+    @objc func AnthropologyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AnthropologyipTextField.text?.isEmpty != true {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(AnthropologyipTextField.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            } else if AnthropologyipTextField.text?.isEmpty == true {
+                AnthropologytLabel.text = AnthropologysLabel.text
+            }
+        } else {
+            if AnthropologyipTextField.text?.isEmpty == true {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(sender.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            } else {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(sender.text!)! + Int(AnthropologyipTextField.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func AnthropologyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AnthropologyjpTextField.text?.isEmpty != true {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(AnthropologyjpTextField.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            } else if AnthropologyipTextField.text?.isEmpty == true {
+                AnthropologytLabel.text = AnthropologysLabel.text
+            }
+        } else {
+            if AnthropologyjpTextField.text?.isEmpty == true {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(sender.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            } else {
+                AnthropologyTotal = Int(AnthropologysLabel.text!)! + Int(AnthropologyjpTextField.text!)! + Int(sender.text!)!
+                AnthropologytLabel.text = String(AnthropologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //生物学
+    @objc func BiologyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if BiologyipTextField.text?.isEmpty != true {
+                BiologyTotal = Int(BiologysLabel.text!)! + Int(BiologyipTextField.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            } else if BiologyipTextField.text?.isEmpty == true {
+                BiologytLabel.text = BiologysLabel.text
+            }
+        } else {
+            if BiologyipTextField.text?.isEmpty == true {
+                BiologyTotal = Int(BiologysLabel.text!)! + Int(sender.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            } else {
+               BiologyTotal = Int(BiologysLabel.text!)! + Int(sender.text!)! + Int(BiologyipTextField.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func BiologyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if BiologyjpTextField.text?.isEmpty != true {
+                BiologyTotal = Int(BiologysLabel.text!)! + Int(BiologyjpTextField.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            } else if BiologyipTextField.text?.isEmpty == true {
+                BiologytLabel.text = BiologysLabel.text
+            }
+        } else {
+            if BiologyjpTextField.text?.isEmpty == true {
+                BiologyTotal = Int(BiologysLabel.text!)! + Int(sender.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            } else {
+                BiologyTotal = Int(BiologysLabel.text!)! + Int(BiologyjpTextField.text!)! + Int(sender.text!)!
+                BiologytLabel.text = String(BiologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //地質学
+    @objc func GeologyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if GeologyipTextField.text?.isEmpty != true {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(GeologyipTextField.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            } else if GeologyipTextField.text?.isEmpty == true {
+                GeologytLabel.text = GeologysLabel.text
+            }
+        } else {
+            if GeologyipTextField.text?.isEmpty == true {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(sender.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            } else {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(sender.text!)! + Int(GeologyipTextField.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func GeologyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if GeologyjpTextField.text?.isEmpty != true {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(GeologyjpTextField.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            } else if GeologyipTextField.text?.isEmpty == true {
+                GeologytLabel.text = GeologysLabel.text
+            }
+        } else {
+            if GeologyjpTextField.text?.isEmpty == true {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(sender.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            } else {
+                GeologyTotal = Int(GeologysLabel.text!)! + Int(GeologyjpTextField.text!)! + Int(sender.text!)!
+                GeologytLabel.text = String(GeologyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //電子工学
+    @objc func EEJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if EEipTextField.text?.isEmpty != true {
+                EETotal = Int(EEsLabel.text!)! + Int(EEipTextField.text!)!
+                EEtLabel.text = String(EETotal)
+            } else if EEipTextField.text?.isEmpty == true {
+                EEtLabel.text = EEsLabel.text
+            }
+        } else {
+            if EEipTextField.text?.isEmpty == true {
+                EETotal = Int(EEsLabel.text!)! + Int(sender.text!)!
+                EEtLabel.text = String(EETotal)
+            } else {
+                EETotal = Int(EEsLabel.text!)! + Int(sender.text!)! + Int(EEipTextField.text!)!
+                EEtLabel.text = String(EETotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func EEIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if EEjpTextField.text?.isEmpty != true {
+                EETotal = Int(EEsLabel.text!)! + Int(EEjpTextField.text!)!
+                EEtLabel.text = String(EETotal)
+            } else if EEipTextField.text?.isEmpty == true {
+                EEtLabel.text = EEsLabel.text
+            }
+        } else {
+            if EEjpTextField.text?.isEmpty == true {
+                EETotal = Int(EEsLabel.text!)! + Int(sender.text!)!
+                EEtLabel.text = String(EETotal)
+            } else {
+                EETotal = Int(EEsLabel.text!)! + Int(EEjpTextField.text!)! + Int(sender.text!)!
+                EEtLabel.text = String(EETotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //天文学
+    @objc func AstronomyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AstronomyipTextField.text?.isEmpty != true {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(AstronomyipTextField.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            } else if AstronomyipTextField.text?.isEmpty == true {
+                AstronomytLabel.text = AstronomysLabel.text
+            }
+        } else {
+            if AstronomyipTextField.text?.isEmpty == true {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(sender.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            } else {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(sender.text!)! + Int(AstronomyipTextField.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func AstronomyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if AstronomyjpTextField.text?.isEmpty != true {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(AstronomyjpTextField.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            } else if AstronomyipTextField.text?.isEmpty == true {
+                AstronomytLabel.text = AstronomysLabel.text
+            }
+        } else {
+            if AstronomyjpTextField.text?.isEmpty == true {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(sender.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            } else {
+                AstronomyTotal = Int(AstronomysLabel.text!)! + Int(AstronomyjpTextField.text!)! + Int(sender.text!)!
+                AstronomytLabel.text = String(AstronomyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //博物学
+    @objc func NHistoryJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if NHistoryipTextField.text?.isEmpty != true {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(NHistoryipTextField.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            } else if NHistoryipTextField.text?.isEmpty == true {
+                NHistorytLabel.text = NHistorysLabel.text
+            }
+        } else {
+            if NHistoryipTextField.text?.isEmpty == true {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(sender.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            } else {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(sender.text!)! + Int(NHistoryipTextField.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func NHistoryIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if NHistoryjpTextField.text?.isEmpty != true {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(NHistoryjpTextField.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            } else if NHistoryipTextField.text?.isEmpty == true {
+                NHistorytLabel.text = NHistorysLabel.text
+            }
+        } else {
+            if NHistoryjpTextField.text?.isEmpty == true {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(sender.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            } else {
+                NHistoryTotal = Int(NHistorysLabel.text!)! + Int(NHistoryjpTextField.text!)! + Int(sender.text!)!
+                NHistorytLabel.text = String(NHistoryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //物理学
+    @objc func PhysicsJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PhysicsipTextField.text?.isEmpty != true {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(PhysicsipTextField.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            } else if PhysicsipTextField.text?.isEmpty == true {
+                PhysicstLabel.text = PhysicssLabel.text
+            }
+        } else {
+            if PhysicsipTextField.text?.isEmpty == true {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(sender.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            } else {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(sender.text!)! + Int(PhysicsipTextField.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PhysicsIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PhysicsjpTextField.text?.isEmpty != true {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(PhysicsjpTextField.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            } else if PhysicsipTextField.text?.isEmpty == true {
+                PhysicstLabel.text = PhysicssLabel.text
+            }
+        } else {
+            if PhysicsjpTextField.text?.isEmpty == true {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(sender.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            } else {
+                PhysicsTotal = Int(PhysicssLabel.text!)! + Int(PhysicsjpTextField.text!)! + Int(sender.text!)!
+                PhysicstLabel.text = String(PhysicsTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //法律
+    @objc func LawJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LawipTextField.text?.isEmpty != true {
+                LawTotal = Int(LawsLabel.text!)! + Int(LawipTextField.text!)!
+                LawtLabel.text = String(LawTotal)
+            } else if LawipTextField.text?.isEmpty == true {
+                LawtLabel.text = LawsLabel.text
+            }
+        } else {
+            if LawipTextField.text?.isEmpty == true {
+                LawTotal = Int(LawsLabel.text!)! + Int(sender.text!)!
+                LawtLabel.text = String(LawTotal)
+            } else {
+                LawTotal = Int(LawsLabel.text!)! + Int(sender.text!)! + Int(LawipTextField.text!)!
+                LawtLabel.text = String(LawTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func LawIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if LawjpTextField.text?.isEmpty != true {
+                LawTotal = Int(LawsLabel.text!)! + Int(LawjpTextField.text!)!
+                LawtLabel.text = String(LawTotal)
+            } else if LawipTextField.text?.isEmpty == true {
+                LawtLabel.text = LawsLabel.text
+            }
+        } else {
+            if LawjpTextField.text?.isEmpty == true {
+                LawTotal = Int(LawsLabel.text!)! + Int(sender.text!)!
+                LawtLabel.text = String(LawTotal)
+            } else {
+                LawTotal = Int(LawsLabel.text!)! + Int(LawjpTextField.text!)! + Int(sender.text!)!
+                LawtLabel.text = String(LawTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //薬学
+    @objc func PharmacyJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PharmacyipTextField.text?.isEmpty != true {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(PharmacyipTextField.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            } else if PharmacyipTextField.text?.isEmpty == true {
+                PharmacytLabel.text = PharmacysLabel.text
+            }
+        } else {
+            if PharmacyipTextField.text?.isEmpty == true {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(sender.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            } else {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(sender.text!)! + Int(PharmacyipTextField.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func PharmacyIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if PharmacyjpTextField.text?.isEmpty != true {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(PharmacyjpTextField.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            } else if PharmacyipTextField.text?.isEmpty == true {
+                PharmacytLabel.text = PharmacysLabel.text
+            }
+        } else {
+            if PharmacyjpTextField.text?.isEmpty == true {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(sender.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            } else {
+                PharmacyTotal = Int(PharmacysLabel.text!)! + Int(PharmacyjpTextField.text!)! + Int(sender.text!)!
+                PharmacytLabel.text = String(PharmacyTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    //歴史
+    @objc func HistoryJPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HistoryipTextField.text?.isEmpty != true {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(HistoryipTextField.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            } else if HistoryipTextField.text?.isEmpty == true {
+                HistorytLabel.text = HistorysLabel.text
+            }
+        } else {
+            if HistoryipTextField.text?.isEmpty == true {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(sender.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            } else {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(sender.text!)! + Int(HistoryipTextField.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldjpArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(JobaLabel.text!)! - total
+        JobnLabel.text = String(total)
+        
+        if total < 0 {
+            JobnLabel.backgroundColor = UIColor.red
+        } else {
+            JobnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    @objc func HistoryIPChange(_ sender: UITextField) {
+        if sender.text?.isEmpty == true {
+            sender.text = ""
+            if HistoryjpTextField.text?.isEmpty != true {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(HistoryjpTextField.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            } else if HistoryipTextField.text?.isEmpty == true {
+                HistorytLabel.text = HistorysLabel.text
+            }
+        } else {
+            if HistoryjpTextField.text?.isEmpty == true {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(sender.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            } else {
+                HistoryTotal = Int(HistorysLabel.text!)! + Int(HistoryjpTextField.text!)! + Int(sender.text!)!
+                HistorytLabel.text = String(HistoryTotal)
+            }
+        }
+        
+        var total = 0
+        for tf in TextFieldipArray {
+            if tf.text?.isEmpty != true {
+                total = total + Int(tf.text!)!
+            }
+        }
+        
+        total = Int(InterestaLabel.text!)! - total
+        InterestnLabel.text = String(total)
+        
+        if total < 0 {
+            InterestnLabel.backgroundColor = UIColor.red
+        } else {
+            InterestnLabel.backgroundColor = UIColor.white
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1101,8 +5738,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func tapRoleButton(sender: UIButton) {
         backgroundView.removeFromSuperview()
         roleTimer()
-        
-        print("tapRoleButtonが押されました")
     }
     
     
@@ -1111,7 +5746,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         for box in checkboxArray {
             box.isSelected = false
         }
-        print("tapCancelButtonが押されました")
     }
     
     
@@ -1133,7 +5767,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("STRDiesが呼ばれました")
             } else if CONCheckbox.isSelected == true {
                 CONCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1148,7 +5781,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("CONDiesが呼ばれました")
             } else if POWCheckbox.isSelected == true {
                 POWCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1163,7 +5795,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("POWDiesが呼ばれました")
             } else if DEXCheckbox.isSelected == true {
                 DEXCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1178,7 +5809,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("DEXDiesが呼ばれました")
             } else if APPCheckbox.isSelected == true {
                 APPCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1193,7 +5823,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("APPDiesが呼ばれました")
             } else if SIZCheckbox.isSelected == true {
                 SIZCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1208,7 +5837,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("SIZDiesが呼ばれました")
             } else if INTCheckbox.isSelected == true {
                 INTCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1223,7 +5851,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("INTDiesが呼ばれました")
             } else if EDUCheckbox.isSelected == true {
                 EDUCheckbox.isSelected = false
                 let timer = Timer.scheduledTimer(timeInterval: 0.05,
@@ -1238,15 +5865,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         box.isSelected = false
                     }
                 }
-                print("EDUDiesが呼ばれました")
             }
             
             i = i + 1
-            print(i)
         }
     }
     
-    
+    //STR
     @objc func STRDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1272,7 +5897,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    //CON
     @objc func CONDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1284,7 +5909,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         EndurancenLabel.text = String((CONTotal + SIZTotal) / 2)
     }
     
-    
+    //POW
     @objc func POWDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1300,7 +5925,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         MPnLabel.text = String(total)
     }
     
-    
+    //DEX
     @objc func DEXDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1312,7 +5937,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         AvoidancetLabel.text = String(total * 2)
     }
     
-    
+    //APP
     @objc func APPDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1322,7 +5947,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         APPnLabel.text = String(total)
     }
     
-    
+    //SIZ
     @objc func SIZDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1349,7 +5974,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    //INT
     @objc func INTDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1362,7 +5987,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         InterestnLabel.text = String(total * 10)
     }
     
-    
+    //EDU
     @objc func EDUDies(_ sender: Timer) {
         let rnd1 = Int.random(in: 1...6)
         let rnd2 = Int.random(in: 1...6)
@@ -1370,7 +5995,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let total = rnd1 + rnd2 + rnd3 + 3
         EDUaLabel.text = String(total)
         EDUnLabel.text = String(total)
-        if total > 100 {
+        if total > 99 {
             KnowledgeaLabel.text = String(99)
             KnowledgenLabel.text = String(99)
         } else {

@@ -138,8 +138,7 @@
 				6AE3DBDC212EE3A800E24916 /* Controller */,
 				6A48FD652114B9900036F1FA /* AppDelegate.swift */,
 				6A48FD692114B9900036F1FA /* Main.storyboard */,
-				6AE1D6B121B936C200273D80 /* checkbox.png */,
-				6AE1D6B721B93E6C00273D80 /* nocheckbox.png */,
+				6AAFAA7421CCE7D9002C81CC /* Imagae */,
 				6A48FD6C2114B9960036F1FA /* Assets.xcassets */,
 				6A48FD6E2114B9960036F1FA /* LaunchScreen.storyboard */,
 				6A48FD712114B9960036F1FA /* Info.plist */,
@@ -163,6 +162,15 @@
 				6A48FD872114B9960036F1FA /* Info.plist */,
 			);
 			path = OriAppUITests;
+			sourceTree = "<group>";
+		};
+		6AAFAA7421CCE7D9002C81CC /* Imagae */ = {
+			isa = PBXGroup;
+			children = (
+				6AE1D6B121B936C200273D80 /* checkbox.png */,
+				6AE1D6B721B93E6C00273D80 /* nocheckbox.png */,
+			);
+			path = Imagae;
 			sourceTree = "<group>";
 		};
 		6AE3DBDC212EE3A800E24916 /* Controller */ = {

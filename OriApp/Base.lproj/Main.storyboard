@@ -2306,7 +2306,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNg-Od-rK5" userLabel="sView">
-                                                <rect key="frame" x="0.0" y="717" width="375" height="2770"/>
+                                                <rect key="frame" x="0.0" y="717" width="375" height="2771"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　技能" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Meo-k5-mhU">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
@@ -4148,7 +4148,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq5-Zd-UVr" userLabel="知識View">
-                                                        <rect key="frame" x="0.0" y="1970" width="375" height="800"/>
+                                                        <rect key="frame" x="0.0" y="1970" width="375" height="805"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" - 知識技能" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljc-5a-WA4" userLabel="知識技能">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
@@ -4903,17 +4903,17 @@
                                                         <constraints>
                                                             <constraint firstItem="ljc-5a-WA4" firstAttribute="leading" secondItem="kq5-Zd-UVr" secondAttribute="leading" id="5NL-RW-Zgr"/>
                                                             <constraint firstAttribute="trailing" secondItem="ljc-5a-WA4" secondAttribute="trailing" id="cF3-xs-sAW"/>
-                                                            <constraint firstAttribute="height" constant="800" id="jLc-8m-GlN"/>
+                                                            <constraint firstAttribute="height" constant="805" id="jLc-8m-GlN"/>
                                                             <constraint firstItem="ljc-5a-WA4" firstAttribute="top" secondItem="kq5-Zd-UVr" secondAttribute="top" id="lvG-5T-gBh"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Meo-k5-mhU" firstAttribute="top" secondItem="rNg-Od-rK5" secondAttribute="top" id="3ta-Rz-cBR"/>
                                                     <constraint firstItem="fyx-1h-Xxn" firstAttribute="leading" secondItem="rNg-Od-rK5" secondAttribute="leading" id="4mW-EM-06m"/>
                                                     <constraint firstItem="Meo-k5-mhU" firstAttribute="leading" secondItem="rNg-Od-rK5" secondAttribute="leading" id="B5z-DC-I3s"/>
-                                                    <constraint firstAttribute="height" constant="2770" id="FNi-zn-PDC"/>
+                                                    <constraint firstAttribute="height" constant="2771" id="FNi-zn-PDC"/>
                                                     <constraint firstAttribute="trailing" secondItem="Pjk-7K-SD8" secondAttribute="trailing" id="Hhu-Bc-JIX"/>
                                                     <constraint firstItem="0WH-K9-WRh" firstAttribute="top" secondItem="fyx-1h-Xxn" secondAttribute="bottom" id="Jkl-ya-E6n"/>
                                                     <constraint firstAttribute="trailing" secondItem="kq5-Zd-UVr" secondAttribute="trailing" id="Kuv-Wt-sCV"/>
@@ -4960,6 +4960,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="FfA-Xs-FRh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DK6-pS-fkk"/>
                             <constraint firstItem="FfA-Xs-FRh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YiU-nt-ddh"/>
@@ -4967,6 +4968,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FfA-Xs-FRh" secondAttribute="trailing" id="yQ3-nR-YlW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bQD-8a-w4r" appends="YES" id="pvg-iG-vAJ"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" systemItem="more" id="ypt-In-CE3"/>
                     <size key="freeformSize" width="375" height="3560"/>
@@ -5022,9 +5026,9 @@
                         <outlet property="ClimbingipTextField" destination="Tur-ML-QH0" id="cIq-px-ci9"/>
                         <outlet property="ClimbingjpTextField" destination="Oij-z3-aEd" id="dms-eH-q8S"/>
                         <outlet property="ClimbingsLabel" destination="6IQ-aT-r60" id="Hg3-9a-Pu1"/>
-                        <outlet property="ClimgingtLabel" destination="8mg-UA-HQk" id="qic-k9-JXL"/>
-                        <outlet property="ComputeripTextLabel" destination="0CC-km-aId" id="Lje-pU-dTC"/>
-                        <outlet property="ComputerjpTextLabel" destination="DRm-8q-Ae2" id="ZgZ-vT-aHB"/>
+                        <outlet property="ClimbingtLabel" destination="8mg-UA-HQk" id="alO-Fh-4eW"/>
+                        <outlet property="ComputeripTextField" destination="0CC-km-aId" id="jTC-iQ-CXw"/>
+                        <outlet property="ComputerjpTextField" destination="DRm-8q-Ae2" id="OZf-oB-J1w"/>
                         <outlet property="ComputersLabel" destination="G8K-Qa-IsA" id="Ied-sT-ynu"/>
                         <outlet property="ComputertLabel" destination="j72-n7-XQZ" id="wI0-ep-r0o"/>
                         <outlet property="ControlipTextField" destination="06M-yN-rMm" id="LEB-eu-DvF"/>
@@ -5061,9 +5065,9 @@
                         <outlet property="ERepairsLabel" destination="LgC-M0-j0p" id="yZI-tg-LNK"/>
                         <outlet property="ERepairtLabel" destination="jPJ-ba-7OY" id="CWg-f6-QS0"/>
                         <outlet property="EducatedguessipTextField" destination="Pvm-Uh-0bs" id="vbZ-8v-Kfx"/>
+                        <outlet property="EducatedguessjpTextField" destination="dwk-Mv-ho8" id="b2f-Xh-oVv"/>
                         <outlet property="EducatedguesssLabel" destination="bUw-Jd-esc" id="ImK-Ia-b99"/>
                         <outlet property="EducatedguesstLabel" destination="dFb-nf-c1V" id="1dP-4b-b94"/>
-                        <outlet property="EducatedgusessjpTextField" destination="dwk-Mv-ho8" id="nhr-bc-yg0"/>
                         <outlet property="EnduranceaLabel" destination="Uyt-oe-e5Z" id="xcf-nN-UDj"/>
                         <outlet property="EndurancenLabel" destination="ZIF-P4-wET" id="foZ-xn-ssU"/>
                         <outlet property="EndurancepmLabel" destination="Wi6-qF-XQr" id="Ia7-VC-Kuo"/>
@@ -5111,7 +5115,7 @@
                         <outlet property="KickipTextField" destination="Vaj-ZA-K7T" id="4w7-UH-Hj3"/>
                         <outlet property="KickjpTextField" destination="cy1-dl-dJl" id="skL-Od-1I4"/>
                         <outlet property="KicksLabel" destination="UAP-e2-Wx6" id="ny6-v1-hKv"/>
-                        <outlet property="KicktTextField" destination="HpK-PN-jmX" id="RIx-el-4QU"/>
+                        <outlet property="KicktLabel" destination="HpK-PN-jmX" id="tg3-EL-Bt2"/>
                         <outlet property="KnowledgeaLabel" destination="f8q-aL-lwk" id="myw-8t-8Pe"/>
                         <outlet property="KnowledgenLabel" destination="jGg-6o-cZG" id="LfG-Mi-nPA"/>
                         <outlet property="KnowledgepmLabel" destination="bNL-Ci-7ik" id="1DL-cg-Yf4"/>
@@ -5213,7 +5217,7 @@
                         <outlet property="PsychologysLabel" destination="dew-i5-Biv" id="eMz-Ch-TPU"/>
                         <outlet property="PsychologytLabel" destination="3fD-vO-naV" id="PRs-Mc-Zid"/>
                         <outlet property="PunchipTextField" destination="U72-l8-cIH" id="fPk-OR-49C"/>
-                        <outlet property="PunchjpTextField" destination="U72-l8-cIH" id="1Ks-Nq-Go3"/>
+                        <outlet property="PunchjpTextField" destination="6gf-jV-qRD" id="WHc-tT-dnV"/>
                         <outlet property="PunchsLabel" destination="fY4-Ee-bG8" id="USD-XS-LdM"/>
                         <outlet property="PunchtLabel" destination="zbk-Os-bRX" id="wST-Ju-6O9"/>
                         <outlet property="RidingipTextField" destination="eHv-rL-Qm4" id="PUP-Hk-7w4"/>
@@ -5257,7 +5261,7 @@
                         <outlet property="ThrowingsLabel" destination="7o6-zh-mPz" id="DLD-GD-qSi"/>
                         <outlet property="ThrowingtLabel" destination="2RI-Jd-n2x" id="bJY-eh-c59"/>
                         <outlet property="TrustipTextField" destination="3ds-Yx-QEE" id="4O3-Tz-A8U"/>
-                        <outlet property="TrustjpaTextField" destination="o53-4Z-KZ2" id="yDl-Wa-LrI"/>
+                        <outlet property="TrustjpTextField" destination="o53-4Z-KZ2" id="dHe-Dx-k3p"/>
                         <outlet property="TrustsLabel" destination="cwr-mk-2Rv" id="zK4-dQ-0BI"/>
                         <outlet property="TrusttLabel" destination="8Wh-fa-xMm" id="ELJ-Pw-lfv"/>
                         <outlet property="WalkipTextField" destination="hSh-v9-YAb" id="PUb-dG-929"/>
@@ -5268,9 +5272,132 @@
                         <outlet property="WithjpTextField" destination="eZC-Q0-jSq" id="kNV-kI-Rtj"/>
                         <outlet property="WithsLabel" destination="LGo-eO-zMz" id="EkK-rs-xg3"/>
                         <outlet property="WithtLabel" destination="EjP-79-LyW" id="Mbh-oR-Big"/>
+                        <outletCollection property="TextFieldjpArray" destination="LSJ-rc-ESR" collectionClass="NSMutableArray" id="S2o-Na-frS"/>
+                        <outletCollection property="TextFieldipArray" destination="LxQ-uA-ngL" collectionClass="NSMutableArray" id="U4B-lk-g0B"/>
+                        <outletCollection property="TextFieldipArray" destination="Vaj-ZA-K7T" collectionClass="NSMutableArray" id="gBw-e9-MfZ"/>
+                        <outletCollection property="TextFieldjpArray" destination="cy1-dl-dJl" collectionClass="NSMutableArray" id="Ee3-7A-Bpg"/>
+                        <outletCollection property="TextFieldjpArray" destination="eZC-Q0-jSq" collectionClass="NSMutableArray" id="Vgc-GA-lDO"/>
+                        <outletCollection property="TextFieldjpArray" destination="6gf-jV-qRD" collectionClass="NSMutableArray" id="r8M-Wg-jYF"/>
+                        <outletCollection property="TextFieldjpArray" destination="MGE-YU-JiI" collectionClass="NSMutableArray" id="kQs-Ti-xyD"/>
+                        <outletCollection property="TextFieldjpArray" destination="Ns6-vI-kbH" collectionClass="NSMutableArray" id="Ny2-jw-JVS"/>
+                        <outletCollection property="TextFieldjpArray" destination="OZu-ep-fLG" collectionClass="NSMutableArray" id="SPv-uM-yhA"/>
+                        <outletCollection property="TextFieldjpArray" destination="Bev-tu-cGK" collectionClass="NSMutableArray" id="Y3e-pi-dPk"/>
+                        <outletCollection property="TextFieldjpArray" destination="oed-xJ-kmR" collectionClass="NSMutableArray" id="Zju-IK-j1c"/>
+                        <outletCollection property="TextFieldjpArray" destination="hD4-qp-u2F" collectionClass="NSMutableArray" id="6Xc-jQ-eRK"/>
+                        <outletCollection property="TextFieldjpArray" destination="njr-Gx-urw" collectionClass="NSMutableArray" id="Lzq-nZ-6GP"/>
+                        <outletCollection property="TextFieldjpArray" destination="jvR-AH-gia" collectionClass="NSMutableArray" id="7rb-uq-TgF"/>
+                        <outletCollection property="TextFieldipArray" destination="asS-md-YxM" collectionClass="NSMutableArray" id="fB5-uf-MHV"/>
+                        <outletCollection property="TextFieldipArray" destination="U72-l8-cIH" collectionClass="NSMutableArray" id="42r-vU-bsZ"/>
+                        <outletCollection property="TextFieldipArray" destination="AyO-30-dl6" collectionClass="NSMutableArray" id="j0H-nQ-cNY"/>
+                        <outletCollection property="TextFieldipArray" destination="4nz-Of-bbZ" collectionClass="NSMutableArray" id="zJl-Bb-fcA"/>
+                        <outletCollection property="TextFieldipArray" destination="xn0-CE-aSa" collectionClass="NSMutableArray" id="vbD-Wt-Yy4"/>
+                        <outletCollection property="TextFieldipArray" destination="ILZ-Z6-ke5" collectionClass="NSMutableArray" id="eCd-WP-r41"/>
+                        <outletCollection property="TextFieldipArray" destination="cA0-tc-Wei" collectionClass="NSMutableArray" id="ATR-Wj-qtb"/>
+                        <outletCollection property="TextFieldipArray" destination="Iaa-IM-w0q" collectionClass="NSMutableArray" id="iXh-hU-iRk"/>
+                        <outletCollection property="TextFieldipArray" destination="mUX-FD-yxL" collectionClass="NSMutableArray" id="DQv-TW-jcc"/>
+                        <outletCollection property="TextFieldipArray" destination="qOL-Q0-DV8" collectionClass="NSMutableArray" id="CBy-Bn-Gl1"/>
+                        <outletCollection property="TextFieldjpArray" destination="Klx-0E-nje" collectionClass="NSMutableArray" id="3mo-wP-vS2"/>
+                        <outletCollection property="TextFieldjpArray" destination="yBG-vN-sd0" collectionClass="NSMutableArray" id="54E-EO-x9t"/>
+                        <outletCollection property="TextFieldjpArray" destination="DLm-oJ-0bM" collectionClass="NSMutableArray" id="ib7-f6-W34"/>
+                        <outletCollection property="TextFieldjpArray" destination="ZnN-sb-CDg" collectionClass="NSMutableArray" id="uaq-df-SRt"/>
+                        <outletCollection property="TextFieldjpArray" destination="fi5-b1-P1U" collectionClass="NSMutableArray" id="LdH-Bn-c4y"/>
+                        <outletCollection property="TextFieldjpArray" destination="qAh-ht-Spi" collectionClass="NSMutableArray" id="Nre-7D-dfs"/>
+                        <outletCollection property="TextFieldjpArray" destination="mII-iO-oJZ" collectionClass="NSMutableArray" id="X4b-bO-cMf"/>
+                        <outletCollection property="TextFieldjpArray" destination="2RQ-gr-4xY" collectionClass="NSMutableArray" id="MGh-dk-XVD"/>
+                        <outletCollection property="TextFieldjpArray" destination="cWb-j1-VNa" collectionClass="NSMutableArray" id="WvU-Yt-kzO"/>
+                        <outletCollection property="TextFieldjpArray" destination="Oij-z3-aEd" collectionClass="NSMutableArray" id="LW8-Pj-9NL"/>
+                        <outletCollection property="TextFieldjpArray" destination="edq-K4-hgP" collectionClass="NSMutableArray" id="gAZ-Jl-F3D"/>
+                        <outletCollection property="TextFieldipArray" destination="vGZ-bW-6XR" collectionClass="NSMutableArray" id="oxl-S7-wgv"/>
+                        <outletCollection property="TextFieldipArray" destination="uY8-30-X6u" collectionClass="NSMutableArray" id="Pbu-a8-kyK"/>
+                        <outletCollection property="TextFieldipArray" destination="NJg-0n-fxd" collectionClass="NSMutableArray" id="ib4-qv-gPt"/>
+                        <outletCollection property="TextFieldipArray" destination="orT-ir-UtO" collectionClass="NSMutableArray" id="wlz-Z0-SEG"/>
+                        <outletCollection property="TextFieldipArray" destination="RSg-io-StG" collectionClass="NSMutableArray" id="c5c-2R-eOf"/>
+                        <outletCollection property="TextFieldipArray" destination="hSh-v9-YAb" collectionClass="NSMutableArray" id="fJ8-D6-txe"/>
+                        <outletCollection property="TextFieldipArray" destination="B9e-bV-zB7" collectionClass="NSMutableArray" id="UIv-i8-1g7"/>
+                        <outletCollection property="TextFieldipArray" destination="Pie-3i-bTE" collectionClass="NSMutableArray" id="4dv-0s-3HX"/>
+                        <outletCollection property="TextFieldipArray" destination="56r-ll-pys" collectionClass="NSMutableArray" id="Q0A-wW-l9A"/>
+                        <outletCollection property="TextFieldipArray" destination="Tur-ML-QH0" collectionClass="NSMutableArray" id="VYu-iv-2pE"/>
+                        <outletCollection property="TextFieldipArray" destination="mmI-A2-iXE" collectionClass="NSMutableArray" id="xY5-A0-lde"/>
+                        <outletCollection property="TextFieldipArray" destination="Pvm-Uh-0bs" collectionClass="NSMutableArray" id="Efd-Vw-Fbq"/>
+                        <outletCollection property="TextFieldjpArray" destination="esq-6x-txO" collectionClass="NSMutableArray" id="p50-qH-1En"/>
+                        <outletCollection property="TextFieldjpArray" destination="Rau-Uj-I41" collectionClass="NSMutableArray" id="duT-AR-ysV"/>
+                        <outletCollection property="TextFieldjpArray" destination="Mv5-ir-DzV" collectionClass="NSMutableArray" id="fcc-Ir-gbg"/>
+                        <outletCollection property="TextFieldjpArray" destination="vZQ-cq-3te" collectionClass="NSMutableArray" id="uy1-Kq-Ahe"/>
+                        <outletCollection property="TextFieldjpArray" destination="Siw-TQ-ngE" collectionClass="NSMutableArray" id="wOJ-Mw-f0W"/>
+                        <outletCollection property="TextFieldjpArray" destination="4EW-kO-QBt" collectionClass="NSMutableArray" id="Xfu-fL-gQy"/>
+                        <outletCollection property="TextFieldjpArray" destination="ugC-lI-J0i" collectionClass="NSMutableArray" id="6xR-3s-vpM"/>
+                        <outletCollection property="TextFieldjpArray" destination="syS-rq-fvz" collectionClass="NSMutableArray" id="qZM-iN-PVQ"/>
+                        <outletCollection property="TextFieldjpArray" destination="dsK-Yq-WXk" collectionClass="NSMutableArray" id="gO5-sQ-wdc"/>
+                        <outletCollection property="TextFieldjpArray" destination="L6j-ny-nmG" collectionClass="NSMutableArray" id="Kbi-3Q-H3z"/>
+                        <outletCollection property="TextFieldjpArray" destination="sDM-7L-qSQ" collectionClass="NSMutableArray" id="sZ3-Sf-9Ag"/>
+                        <outletCollection property="TextFieldipArray" destination="NRX-gf-Cb5" collectionClass="NSMutableArray" id="cpq-uG-BWe"/>
+                        <outletCollection property="TextFieldipArray" destination="v87-sn-YFO" collectionClass="NSMutableArray" id="D4C-Zv-Tkj"/>
+                        <outletCollection property="TextFieldipArray" destination="faB-SZ-rzf" collectionClass="NSMutableArray" id="pmF-Td-M5x"/>
+                        <outletCollection property="TextFieldipArray" destination="eHv-rL-Qm4" collectionClass="NSMutableArray" id="tNw-yp-vte"/>
+                        <outletCollection property="TextFieldipArray" destination="xh3-4x-t7v" collectionClass="NSMutableArray" id="VeE-OD-KWC"/>
+                        <outletCollection property="TextFieldipArray" destination="6wj-7L-n1R" collectionClass="NSMutableArray" id="wV3-pe-hCW"/>
+                        <outletCollection property="TextFieldipArray" destination="06M-yN-rMm" collectionClass="NSMutableArray" id="SfI-yE-AxD"/>
+                        <outletCollection property="TextFieldipArray" destination="59k-2Q-seM" collectionClass="NSMutableArray" id="9cy-iJ-DIT"/>
+                        <outletCollection property="TextFieldipArray" destination="5SP-Zo-8fn" collectionClass="NSMutableArray" id="EkH-ix-ca6"/>
+                        <outletCollection property="TextFieldipArray" destination="aca-6y-xnX" collectionClass="NSMutableArray" id="ADE-7v-Dj6"/>
+                        <outletCollection property="TextFieldipArray" destination="5Qa-yd-Eu5" collectionClass="NSMutableArray" id="oks-CD-v7F"/>
+                        <outletCollection property="TextFieldjpArray" destination="J0a-ow-fHT" collectionClass="NSMutableArray" id="Hwb-IK-7dK"/>
+                        <outletCollection property="TextFieldjpArray" destination="o53-4Z-KZ2" collectionClass="NSMutableArray" id="hTE-xT-bwS"/>
+                        <outletCollection property="TextFieldjpArray" destination="pbJ-Yl-XQi" collectionClass="NSMutableArray" id="vhW-v7-a2g"/>
+                        <outletCollection property="TextFieldjpArray" destination="Eu0-YN-Fog" collectionClass="NSMutableArray" id="BQx-Rm-Pbd"/>
+                        <outletCollection property="TextFieldjpArray" destination="b4G-n8-LHn" collectionClass="NSMutableArray" id="f8z-U4-BI4"/>
+                        <outletCollection property="TextFieldipArray" destination="E0E-1y-CLG" collectionClass="NSMutableArray" id="T2g-Pq-SpY"/>
+                        <outletCollection property="TextFieldipArray" destination="3ds-Yx-QEE" collectionClass="NSMutableArray" id="Qed-yg-VRb"/>
+                        <outletCollection property="TextFieldipArray" destination="gg5-vj-QGZ" collectionClass="NSMutableArray" id="AiR-Dp-oAg"/>
+                        <outletCollection property="TextFieldipArray" destination="JGS-85-yGZ" collectionClass="NSMutableArray" id="V0m-ak-1dJ"/>
+                        <outletCollection property="TextFieldipArray" destination="hsA-sI-jdv" collectionClass="NSMutableArray" id="OVF-E9-5CM"/>
+                        <outletCollection property="TextFieldjpArray" destination="3ys-sO-5Zj" collectionClass="NSMutableArray" id="KXc-0B-SvE"/>
+                        <outletCollection property="TextFieldjpArray" destination="ZCQ-Z0-Emw" collectionClass="NSMutableArray" id="STH-mm-y7a"/>
+                        <outletCollection property="TextFieldjpArray" destination="bjW-fd-yq3" collectionClass="NSMutableArray" id="Vjg-h7-UqO"/>
+                        <outletCollection property="TextFieldjpArray" destination="LpG-re-dXV" collectionClass="NSMutableArray" id="fjB-fQ-pOc"/>
+                        <outletCollection property="TextFieldjpArray" destination="TYJ-Ya-Ybx" collectionClass="NSMutableArray" id="eBh-Vu-PY3"/>
+                        <outletCollection property="TextFieldjpArray" destination="Iei-aG-X5s" collectionClass="NSMutableArray" id="T4h-fy-Mnb"/>
+                        <outletCollection property="TextFieldjpArray" destination="X5t-Ex-2aR" collectionClass="NSMutableArray" id="trf-bp-fAA"/>
+                        <outletCollection property="TextFieldjpArray" destination="DRm-8q-Ae2" collectionClass="NSMutableArray" id="IR3-ce-TwF"/>
+                        <outletCollection property="TextFieldjpArray" destination="nde-Vj-VEj" collectionClass="NSMutableArray" id="y6X-dV-Ovt"/>
+                        <outletCollection property="TextFieldjpArray" destination="i6S-pl-8nf" collectionClass="NSMutableArray" id="5hP-oh-lYP"/>
+                        <outletCollection property="TextFieldjpArray" destination="jaE-Gh-eaJ" collectionClass="NSMutableArray" id="8uY-c1-NUL"/>
+                        <outletCollection property="TextFieldjpArray" destination="6cP-Hj-L9f" collectionClass="NSMutableArray" id="l72-tM-Z09"/>
+                        <outletCollection property="TextFieldjpArray" destination="xy9-Nn-LTF" collectionClass="NSMutableArray" id="axh-nz-bP5"/>
+                        <outletCollection property="TextFieldjpArray" destination="6tn-iC-FD2" collectionClass="NSMutableArray" id="a6x-WN-lcI"/>
+                        <outletCollection property="TextFieldjpArray" destination="ECS-45-M09" collectionClass="NSMutableArray" id="7a7-vm-7aj"/>
+                        <outletCollection property="TextFieldjpArray" destination="e7s-5G-9X1" collectionClass="NSMutableArray" id="ZTt-qD-7G9"/>
+                        <outletCollection property="TextFieldjpArray" destination="p2D-k7-OqD" collectionClass="NSMutableArray" id="cEV-8D-0Z4"/>
+                        <outletCollection property="TextFieldjpArray" destination="puD-lg-6HW" collectionClass="NSMutableArray" id="WqA-JJ-4UL"/>
+                        <outletCollection property="TextFieldjpArray" destination="8Vx-80-T9Z" collectionClass="NSMutableArray" id="Tys-Qk-WW5"/>
+                        <outletCollection property="TextFieldipArray" destination="7DJ-fS-vcN" collectionClass="NSMutableArray" id="LQr-Yi-R6k"/>
+                        <outletCollection property="TextFieldipArray" destination="tZA-0u-JRR" collectionClass="NSMutableArray" id="Fvp-5n-v9u"/>
+                        <outletCollection property="TextFieldipArray" destination="E3C-wO-NAe" collectionClass="NSMutableArray" id="u6G-28-zwU"/>
+                        <outletCollection property="TextFieldipArray" destination="pTE-WI-q9L" collectionClass="NSMutableArray" id="ekE-Nq-kIv"/>
+                        <outletCollection property="TextFieldipArray" destination="fy1-rP-5rO" collectionClass="NSMutableArray" id="rG4-3N-6V2"/>
+                        <outletCollection property="TextFieldipArray" destination="0Ix-WR-9Yl" collectionClass="NSMutableArray" id="fAl-Op-k7Z"/>
+                        <outletCollection property="TextFieldipArray" destination="QAt-UL-fIK" collectionClass="NSMutableArray" id="0wa-cF-amI"/>
+                        <outletCollection property="TextFieldipArray" destination="0CC-km-aId" collectionClass="NSMutableArray" id="cNX-xc-uWY"/>
+                        <outletCollection property="TextFieldipArray" destination="lCm-Y0-2uj" collectionClass="NSMutableArray" id="roP-rh-Ytk"/>
+                        <outletCollection property="TextFieldipArray" destination="i1e-dQ-z4z" collectionClass="NSMutableArray" id="pM7-c8-6ob"/>
+                        <outletCollection property="TextFieldipArray" destination="JPW-nn-SfX" collectionClass="NSMutableArray" id="LkJ-yL-GyI"/>
+                        <outletCollection property="TextFieldipArray" destination="aCl-94-Ufa" collectionClass="NSMutableArray" id="Nfh-h1-xaX"/>
+                        <outletCollection property="TextFieldipArray" destination="EGH-PP-vyV" collectionClass="NSMutableArray" id="NF7-HK-qMW"/>
+                        <outletCollection property="TextFieldipArray" destination="QSm-2Q-XeS" collectionClass="NSMutableArray" id="vw7-qo-jeQ"/>
+                        <outletCollection property="TextFieldipArray" destination="VFi-zR-zbS" collectionClass="NSMutableArray" id="H2R-aP-dvg"/>
+                        <outletCollection property="TextFieldipArray" destination="l7z-cS-Rcv" collectionClass="NSMutableArray" id="Pqd-Ne-lIs"/>
+                        <outletCollection property="TextFieldipArray" destination="gdf-Ua-ogg" collectionClass="NSMutableArray" id="Vbb-In-IKV"/>
+                        <outletCollection property="TextFieldipArray" destination="sYX-Ck-Ubl" collectionClass="NSMutableArray" id="7NH-Pj-86q"/>
+                        <outletCollection property="TextFieldipArray" destination="fRK-Op-q7r" collectionClass="NSMutableArray" id="3vx-C7-vRI"/>
+                        <outletCollection property="TextFieldjpArray" destination="dwk-Mv-ho8" collectionClass="NSMutableArray" id="NNX-wF-kLb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bQD-8a-w4r">
+                    <connections>
+                        <action selector="tapGestureRecognizer:" destination="BYZ-38-t0r" id="ubS-dt-YaT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1309.5999999999999" y="-260.86956521739131"/>
         </scene>
