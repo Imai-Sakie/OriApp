@@ -9,7 +9,7 @@
 import UIKit
 import CTCheckbox
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     /*--------------STR--------------*/
     @IBOutlet weak var STRnLabel: UILabel!
     @IBOutlet weak var STRpmLabel: UILabel!
@@ -484,6 +484,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     /*--------------その他--------------*/
+    //高さを変える用
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var ViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var FormViewHeight: NSLayoutConstraint!
+    
+    
     var checkboxArray: [UIButton] = []
     
     var backgroundView: UIView!
@@ -755,7 +762,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         HistoryipTextField.addTarget(self, action: #selector(self.HistoryIPChange(_:)), for: .editingChanged)
         
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -772,6 +780,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
             tfip.endEditing(true)
         }
     }
+    
+    //textFieldが隠れない処理
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("タップされた")
+        if (textField == PhysicsjpTextField) || (textField == PhysicsipTextField) {
+            ViewHeight.constant = 845
+            FormViewHeight.constant = 3531
+        } else if (textField == LawjpTextField) || (textField == LawipTextField) {
+            ViewHeight.constant = 885
+            FormViewHeight.constant = 3571
+        } else if (textField == PharmacyjpTextField) || (textField == PharmacyipTextField){
+            ViewHeight.constant = 925
+            FormViewHeight.constant = 3611
+        } else if (textField == HistoryjpTextField) || (textField == HistoryipTextField) {
+            ViewHeight.constant = 965
+            FormViewHeight.constant = 3651
+        }
+
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        ViewHeight.constant = 805
+        FormViewHeight.constant = 3491
+    }
+    
     
     
     //----戦闘技能----
@@ -5197,14 +5230,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     /*--------------±ボタンの処理--------------*/
     //STR
     @IBAction func STRpBtn(_ sender: UIButton) {
@@ -6166,4 +6191,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
-
