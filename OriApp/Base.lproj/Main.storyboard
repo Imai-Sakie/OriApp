@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--sheet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OriApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -4972,7 +4972,9 @@
                             <outletCollection property="gestureRecognizers" destination="bQD-8a-w4r" appends="YES" id="pvg-iG-vAJ"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" systemItem="more" id="ypt-In-CE3"/>
+                    <tabBarItem key="tabBarItem" title="sheet" image="sheet_icon.png" landscapeImage="sheet_icon.png" largeContentSizeImage="sheet_icon.png" selectedImage="sheet_icon.png" id="ypt-In-CE3">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <size key="freeformSize" width="375" height="3560"/>
                     <connections>
                         <outlet property="APPaLabel" destination="hug-O3-bPa" id="VDL-Ro-IVA"/>
@@ -5404,7 +5406,7 @@
             </objects>
             <point key="canvasLocation" x="1943" y="-300"/>
         </scene>
-        <!--Item-->
+        <!--Dies-->
         <scene sceneID="T4T-gh-AdI">
             <objects>
                 <viewController id="3aO-bD-0ge" customClass="DiesViewController" customModule="OriApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -5478,7 +5480,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="OriDies:" destination="3aO-bD-0ge" eventType="touchUpInside" id="fIL-YC-QYU"/>
+                                                    <action selector="OriDies:" destination="3aO-bD-0ge" eventType="touchUpInside" id="JVG-IY-ofL"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -6096,7 +6098,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4No-aS-Xaf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="u6g-g1-44x"/>
+                    <tabBarItem key="tabBarItem" title="Dies" image="dies_icon.png" landscapeImage="dies_icon.png" largeContentSizeImage="dies_icon.png" selectedImage="dies_icon.png" id="u6g-g1-44x">
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="DiesNumber" destination="Cea-8i-fNP" id="Nfb-NW-2du"/>
                         <outlet property="DiesSum" destination="WJy-m2-wDR" id="yG5-We-Cwb"/>
@@ -6140,4 +6145,8 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dies_icon.png" width="50" height="36"/>
+        <image name="sheet_icon.png" width="30" height="30"/>
+    </resources>
 </document>

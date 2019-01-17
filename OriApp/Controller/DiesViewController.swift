@@ -139,8 +139,13 @@ class DiesViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 timer.invalidate()
             }
+        } else if (DiesSum.text?.isEmpty == true) && (DiesNumber.text?.isEmpty == true) {
+            //TextFieldの中身がない場合のアクションシート
+            let alert = UIAlertController(title: "入力漏れ", message: "数値の入力漏れがあります", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(OKAction)
+            self.present(alert, animated: true, completion: nil)
         } else if (DiesSum.text?.isEmpty == true) || (DiesNumber.text?.isEmpty == true) {
-            //どちらかのTextFieldの中身がない場合のアクションシート
             let alert = UIAlertController(title: "入力漏れ", message: "数値の入力漏れがあります", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
             alert.addAction(OKAction)

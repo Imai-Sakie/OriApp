@@ -15,7 +15,8 @@
 		6A48FD702114B9960036F1FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A48FD6E2114B9960036F1FA /* LaunchScreen.storyboard */; };
 		6A48FD7B2114B9960036F1FA /* OriAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48FD7A2114B9960036F1FA /* OriAppTests.swift */; };
 		6A48FD862114B9960036F1FA /* OriAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A48FD852114B9960036F1FA /* OriAppUITests.swift */; };
-		6A739C9621B69FE100FF4D06 /* AllRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A739C9521B69FE100FF4D06 /* AllRoleViewController.swift */; };
+		6AD152A721F08A3C00ABA981 /* dies_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AD152A621F08A3900ABA981 /* dies_icon.png */; };
+		6AD152AD21F08BA900ABA981 /* sheet_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AD152AC21F08B9B00ABA981 /* sheet_icon.png */; };
 		6AE1D6B221B936C200273D80 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AE1D6B121B936C200273D80 /* checkbox.png */; };
 		6AE1D6B821B93E6D00273D80 /* nocheckbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AE1D6B721B93E6C00273D80 /* nocheckbox.png */; };
 		6AE3DBDF212EE42400E24916 /* DiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3DBDE212EE42400E24916 /* DiesViewController.swift */; };
@@ -59,7 +60,8 @@
 		6A48FD812114B9960036F1FA /* OriAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OriAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A48FD852114B9960036F1FA /* OriAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriAppUITests.swift; sourceTree = "<group>"; };
 		6A48FD872114B9960036F1FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A739C9521B69FE100FF4D06 /* AllRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRoleViewController.swift; sourceTree = "<group>"; };
+		6AD152A621F08A3900ABA981 /* dies_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dies_icon.png; sourceTree = "<group>"; };
+		6AD152AC21F08B9B00ABA981 /* sheet_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheet_icon.png; sourceTree = "<group>"; };
 		6AE1D6B121B936C200273D80 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		6AE1D6B721B93E6C00273D80 /* nocheckbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nocheckbox.png; sourceTree = "<group>"; };
 		6AE3DBDE212EE42400E24916 /* DiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiesViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,8 @@
 		6AAFAA7421CCE7D9002C81CC /* Imagae */ = {
 			isa = PBXGroup;
 			children = (
+				6AD152AC21F08B9B00ABA981 /* sheet_icon.png */,
+				6AD152A621F08A3900ABA981 /* dies_icon.png */,
 				6AE1D6B121B936C200273D80 /* checkbox.png */,
 				6AE1D6B721B93E6C00273D80 /* nocheckbox.png */,
 			);
@@ -178,7 +182,6 @@
 			children = (
 				6A48FD672114B9900036F1FA /* ViewController.swift */,
 				6AE3DBDE212EE42400E24916 /* DiesViewController.swift */,
-				6A739C9521B69FE100FF4D06 /* AllRoleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -276,7 +279,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A48FD5D2114B9900036F1FA /* Build configuration list for PBXProject "OriApp" */;
+			buildConfigurationList = 6A48FD5D2114B9900036F1FA /* Build configuration list for PBXProject "キャラシート作成" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -301,6 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD152A721F08A3C00ABA981 /* dies_icon.png in Resources */,
+				6AD152AD21F08BA900ABA981 /* sheet_icon.png in Resources */,
 				6A48FD702114B9960036F1FA /* LaunchScreen.storyboard in Resources */,
 				6AE1D6B821B93E6D00273D80 /* nocheckbox.png in Resources */,
 				6A48FD6D2114B9960036F1FA /* Assets.xcassets in Resources */,
@@ -421,7 +426,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A739C9621B69FE100FF4D06 /* AllRoleViewController.swift in Sources */,
 				6AE3DBDF212EE42400E24916 /* DiesViewController.swift in Sources */,
 				6A48FD682114B9900036F1FA /* ViewController.swift in Sources */,
 				6A48FD662114B9900036F1FA /* AppDelegate.swift in Sources */,
@@ -716,7 +720,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A48FD5D2114B9900036F1FA /* Build configuration list for PBXProject "OriApp" */ = {
+		6A48FD5D2114B9900036F1FA /* Build configuration list for PBXProject "キャラシート作成" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A48FD882114B9960036F1FA /* Debug */,

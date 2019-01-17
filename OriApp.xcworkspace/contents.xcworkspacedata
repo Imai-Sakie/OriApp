@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OriApp.xcodeproj">
+      location = "group:/Users/imaisakie/Desktop/iOS-Projects/OriApp/&#x30ad;&#x30e3;&#x30e9;&#x30b7;&#x30fc;&#x30c8;&#x4f5c;&#x6210;.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
